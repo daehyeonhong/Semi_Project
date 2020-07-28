@@ -14,7 +14,7 @@ request.setCharacterEncoding("UTF-8");
 				 cardMM = request.getParameter("cardMM"),
 				 cardYY = request.getParameter("cardYY"),
 				 cardPassword = request.getParameter("cardPassword"),
-				 pC = request.getParameter("pC"), 
-				 dd = request.getParameter("dd");
-out.print(price+", "+card1+", "+card2+", "+card3+", "+card4+", "+cardMM+", "+cardYY+", "+cardPassword+", "+pC+", "+dd);
+				 birth = request.getParameter("birth"), 
+				 payment = request.getParameter("payment");
+out.print(price + ", " + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ", " + cardMM + ", " + cardYY + ", " + cardPassword + ", " + birth + ", " + payment);
 %>

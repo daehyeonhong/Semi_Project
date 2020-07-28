@@ -24,7 +24,7 @@
      <div class="form-group row">
         <label class="col-sm-2">배송일</label>
         <div class="col-sm-3">
-        	<input name="shippingDate" class="form-control">(yyyy/mm/dd)
+        	<input name="shippingDate" class="form-control" placeholder="(yyyy/mm/dd)" />
         </div>
      </div>
      <div class="form-group row">
@@ -48,11 +48,9 @@
      
      <div class="form-group row">
         <div class="col-sm-offset-2 col-sm-10">
-        	<a href="./cart.jsp?cartId=<%=request.getParameter("cartId")%>"
-        	    class="btn btn-secondary" role="button">이전</a>
+        	<a href="./cart.jsp?cartId=<%=request.getParameter("cartId")%>" class="btn btn-secondary" role="button">이전</a>
         	<input type="submit" class="btn btn-primary" value="등록"/>
-        	<a href="./checkOutCancelled.jsp" 
-        	   class="btn btn-secondary" role="button">취소</a>
+        	<a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a>
         </div>
      </div>
 
