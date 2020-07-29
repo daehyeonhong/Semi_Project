@@ -65,8 +65,7 @@
 				<input type="number" id="cardYY" name="cardYY" value="" min="0" max="99" placeholder="YY" /><br />
 				<label>비밀번호 앞 2자리</label><br />
 				<input type="password" id="cardPassword" name="cardPassword" maxlength="2" placeholder="비밀번호 앞 2자리"/><br />
-				<label>인증번호</label><br />
-				<label>주민번호 앞 6자리</label><br />
+				<label>인증번호 주민번호 앞 6자리</label><br />
 				<input type="password" id="birth" name="birth" maxlength="6" placeholder="주민번호 앞 6자리"/><br />
 				<label>할부기간</label><br />
 				<select name="payment" id="payment">

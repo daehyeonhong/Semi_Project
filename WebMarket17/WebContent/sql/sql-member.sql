@@ -28,3 +28,7 @@ select * from category;
 update member set password='1',phone='2'where id='12'
 
 update category set categoryName=?,description=?where id=?
+
+insert into category(categoryName,description) values('123','321');
+
+desc category

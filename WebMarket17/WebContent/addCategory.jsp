@@ -12,11 +12,11 @@
 </head>
 <body>
 	<script type="text/javascript">
-		function removeBtn(a) {
-			alert(a);
+		function removeBtn(seq) {
+			alert(seq);
 		}
-		function editBtn(a) {
-			location.href = "editCategory.jsp?seq=" + a;
+		function editBtn(seq) {
+			location.href = "editCategory.jsp?seq=" + seq;
 		}
 	</script>
 	<jsp:include page="menu.jsp" />
@@ -41,17 +41,18 @@
 			PreparedStatement preparedStatement = con.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
+				String seq = resultSet.getString(1);
 			%>
 			<tr>
 				<td>
-					<%=resultSet.getString(1)%>
-					<input type="hidden" id="seq" name="seq" value="<%=resultSet.getString(1)%>" />
+					<%=seq%>
+					<input type="hidden" id="seq" name="seq" value="<%=seq%>" />
 				</td>
 				<td><%=resultSet.getString(2)%></td>
 				<td><%=resultSet.getString(3)%></td>
 				<td>
-					<input type='button' value='삭제' id="remove<%=resultSet.getString(1)%>" onclick="removeBtn(<%=resultSet.getString(1)%>)" />
-					<input type='button' value='수정' id="edit<%=resultSet.getString(1)%>" onclick="editBtn(<%=resultSet.getString(1)%>)" />
+					<input type='button' value='삭제' id="remove" onclick="removeBtn(<%=seq%>)" />
+					<input type='button' value='수정' id="edit" onclick="editBtn(<%=seq%>)" />
 				</td>
 			</tr>
 			<%
@@ -65,20 +66,18 @@
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="categoryName" class="form-control"
-							required="required" placeholder="CategoryName" />
+						<input type="text" name="categoryName" class="form-control" required="required" placeholder="CategoryName" />
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 설명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="description" class="form-control"
-							placeholder="Description" />
+						<input type="text" name="description" class="form-control" placeholder="Description" />
 					</div>
 				</div>
-				<input type="submit" value="등록" class="btn btn-primary" /> <input
-					type="reset" value="취소" class="btn btn-warning" /> <a
-					href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
+				<input type="submit" value="등록" class="btn btn-primary" />
+				<input type="reset" value="취소" class="btn btn-warning" />
+				<a href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
 			</form>
 		</div>
 	</div>
