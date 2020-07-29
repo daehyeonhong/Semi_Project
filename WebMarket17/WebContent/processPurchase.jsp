@@ -25,11 +25,8 @@ out.print(price + ", " + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ",
 
 
 List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
-int cnt = 0, chk = 0;
 if (cartList != null) {
 		for(Product product : cartList) {
-			System.out.printf("cnt: %d, chk: %d %n", cnt, chk);
-			cnt++;
 			String sql = "select p_unitsInStock from product where p_id=?";
 			int cartListQtt = product.getQuantity(), productStock = 0;
 			String id = product.getProductId();
@@ -55,13 +52,12 @@ if (cartList != null) {
 					preparedStatement.setInt(1, productStock);
 					preparedStatement.setString(2, id);
 					int result = preparedStatement.executeUpdate();
-					chk = (result > 0) ? chk++ : chk;
 				}
 			}
 		}
-		if ((chk == cnt) && true) {
 		con.commit();
-		}
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("thankCustomer.jsp");
+		requestDispatcher.forward(request, response);
 	} else {
 		response.sendRedirect("./exceptionEmptyCart.jsp");
 	}

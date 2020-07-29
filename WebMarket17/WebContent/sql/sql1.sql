@@ -60,6 +60,7 @@ primary key(seq)
 select * from sale;
 select * from delivery;
 select * from product;
+update product set p_unitsInStock = 1002 where p_id="P1234"
 
 select * 
   from sale s, 
