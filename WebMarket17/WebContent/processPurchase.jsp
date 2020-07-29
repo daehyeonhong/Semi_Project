@@ -21,7 +21,7 @@ request.setCharacterEncoding("UTF-8");
 				 cardPassword = request.getParameter("cardPassword"),
 				 birth = request.getParameter("birth"), 
 				 payment = request.getParameter("payment");
-out.print(price + ", " + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ", " + cardMM + ", " + cardYY + ", " + cardPassword + ", " + birth + ", " + payment + "<br />");
+out.print(price + ", ," + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ", " + cardMM + ", " + cardYY + ", " + cardPassword + ", " + birth + ", " + payment + "<br />");
 
 
 List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
