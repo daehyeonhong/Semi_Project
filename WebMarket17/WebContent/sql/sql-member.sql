@@ -22,7 +22,9 @@ select * from member where id='hong';
 select count(*) from member where id='hong';
 
 select * from member;
+select * from category;
 
 
+update member set password='1',phone='2'where id='12'
 
-
+update category set categoryName=?,description=?where id=?
