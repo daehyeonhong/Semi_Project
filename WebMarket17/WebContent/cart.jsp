@@ -57,8 +57,10 @@ function k(seq){
 				<%
 					int sum = 0;
 				List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
-				if (cartList == null || (cartList.size() == 0))
+				if (cartList == null || (cartList.size() == 0)) {
 					cartList = new ArrayList<Product>();
+					session.setAttribute("cartlist", cartList);
+				}
 
 				for (int i = 0; i < cartList.size(); i++) {
 					Product product = cartList.get(i);

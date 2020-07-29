@@ -68,7 +68,8 @@ select *
  where s.sessionId=d.sessionId
    and s.productid=p.p_id;
    
+   select p_unitsInStock from where p_id='P1234'
    
 
-
+update product set p_unitsInStock=1000 where p_id= 'P1234'
 

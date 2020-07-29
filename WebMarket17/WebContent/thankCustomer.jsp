@@ -111,7 +111,9 @@
 </div>
 <%
     //세션정보 삭제
-	session.invalidate();
+		/* session.removeAttribute("cartlist");
+	  session.removeValue("cartlist"); */
+	  session.invalidate();
     //쿠키에 저장된 장바구니 정보 삭제
    for(int i=0;i<cookies.length;i++){
     	Cookie thisCookie=cookies[i];

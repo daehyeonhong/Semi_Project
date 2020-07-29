@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="dto.Product"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
-<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
-	type="text/javascript"></script>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 </head>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,6 +18,9 @@
 			});
 		});
 	</script>
+	<%
+	
+	%>
 	<%@include file="menu.jsp"%>
 	<div class="jumbotron">
 		<div class="container">
@@ -33,7 +36,20 @@
 		<div>
 			<form id="purchaseForm" action="processPurchase.jsp" method="post">
 				<label>결제금액</label><br />
-				<input value="결제금액" disabled="disabled" />
+				<input value="결제금액" disabled="disabled" /><br />
+				<%
+				List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
+				if (cartList != null) {
+					for(Product product : cartList) {
+					%>
+							<input value="<%=product.getProductId()%>" disabled="disabled" />
+							<input value="<%=product.getQuantity()%>" disabled="disabled" /><br />
+					<%
+					}
+				} else {
+					response.sendRedirect("exceptionEmptyCart.jsp");
+				}
+				%>
 				<input type="hidden" id="price" name="price" value="price" /><br />
 				<label>카드 번호</label><br />
 				<input id="cardId1" name="cardId1" maxlength="4" placeholder="0000" />
