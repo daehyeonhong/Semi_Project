@@ -9,7 +9,8 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-String cartId = session.getId();
+/* String cartId = session.getId(); */
+	String cartId = (String)session.getAttribute("sessionId");
 
 String shipping_cartId = "";
 String shipping_name = "";
