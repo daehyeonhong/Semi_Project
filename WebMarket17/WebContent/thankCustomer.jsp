@@ -60,7 +60,7 @@
     try{
     	PreparedStatement pstmt =null;
     for(int i=0;i<list.size();i++){	
-    String sql1="insert into sale(saledate,sessionId,productId,unitprice,saleqty) values(?,?,?,?,?)";
+    	String sql1 = "insert into sale(saledate, sessionId, productId, unitprice, saleqty, status ) values (?,?,?,?,?,1)";
     pstmt=con.prepareStatement(sql1);
     
     pstmt.setString(1,sdf.format(saleDate));
@@ -105,15 +105,23 @@
    <p> 주문은 <%=shipping_shippingDate %>에 배송될 예정입니다.
    <p> 주문번호:<%=shipping_cartId %>
 </div>
-<div class="container">
+<!-- <div class="container">
 	<p><a href="./products.jsp" 
 	     class="btn btn-secondary">&laquo;상품목록</a>
+</div> -->
+<div class="container">
+
+	<p><a href="./products.jsp" class="btn btn-secondary">&laquo;상품목록</a>
+	     
+	<p><a href="./deliveryInfo.jsp?id=<%=shipping_cartId%>" class="btn btn-secondary">&laquo;배송조회</a>
+
 </div>
 <%
     //세션정보 삭제
 		/* session.removeAttribute("cartlist");
 	  session.removeValue("cartlist"); */
-	  session.invalidate();
+	  /* session.invalidate(); */
+	  session.setAttribute("cartlist", null);
     //쿠키에 저장된 장바구니 정보 삭제
    for(int i=0;i<cookies.length;i++){
     	Cookie thisCookie=cookies[i];

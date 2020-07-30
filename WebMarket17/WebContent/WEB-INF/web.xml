@@ -13,6 +13,7 @@
    <url-pattern>/addProduct.jsp</url-pattern>
    <url-pattern>/editProduct.jsp</url-pattern>
    <url-pattern>/addCategory.jsp</url-pattern>
+   <url-pattern>/loginAdmin.jsp</url-pattern>
    </web-resource-collection>
    <auth-constraint>
    		<description>권한관리</description>
