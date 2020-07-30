@@ -32,3 +32,4 @@ update category set categoryName=?,description=?where id=?
 insert into category(categoryName,description) values('123','321');
 
 desc category
+delete from category where seq=4;

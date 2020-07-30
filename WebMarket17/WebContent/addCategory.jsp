@@ -17,7 +17,7 @@
 			location.href = "removeCategory.jsp?seq=" + seq;
 		}
 		function editBtn(seq) {
-			location.href = "editCategory.jsp?seq=" + seq;
+				location.href = confirm('정말 변경하시겠습니까?') ? ("editCategory.jsp?seq=" + seq) : ("addCategory.jsp");
 		}
 	</script>
 	<jsp:include page="menu.jsp" />
@@ -67,13 +67,13 @@
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="categoryName" class="form-control" required="required" placeholder="CategoryName" />
+						<input type="text" name="categoryName" id="categoryName" class="form-control" required="required" placeholder="CategoryName" autofocus="autofocus" />
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 설명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="description" class="form-control" placeholder="Description" />
+						<input type="text" name="description" id="description" class="form-control" placeholder="Description" />
 					</div>
 				</div>
 				<input type="submit" value="등록" class="btn btn-primary" />

@@ -13,5 +13,5 @@
    
    int result = pstmt.executeUpdate();
    
-   response.sendRedirect("./products.jsp");
+   response.sendRedirect("./addCategory.jsp");
 %>

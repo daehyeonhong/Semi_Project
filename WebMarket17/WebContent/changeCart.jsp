@@ -11,8 +11,7 @@
 <%
 //세션에 cartlist가 있는지 여부 확인
 //없으면 cartlist를 생성하여 session에 저장.
-ArrayList<Product> list 
-   =(ArrayList<Product>)session.getAttribute("cartlist");
+ArrayList<Product> list =(ArrayList<Product>)session.getAttribute("cartlist");
 if(list==null){
 	System.out.println("세션에 cartlist정보가 없음,새로만듦");
 	list = new ArrayList<Product>();
