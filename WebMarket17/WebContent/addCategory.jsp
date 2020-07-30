@@ -14,6 +14,7 @@
 	<script type="text/javascript">
 		function removeBtn(seq) {
 			alert(seq);
+			location.href = "removeCategory.jsp?seq=" + seq;
 		}
 		function editBtn(seq) {
 			location.href = "editCategory.jsp?seq=" + seq;
