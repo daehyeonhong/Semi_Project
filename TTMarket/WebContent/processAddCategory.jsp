@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="dbconn.jsp"%>
 <%
+request.setCharacterEncoding("UTF-8");
    String categoryName=request.getParameter("categoryName");
    String description=request.getParameter("description");
    //db에 저장 - 오늘의 과제

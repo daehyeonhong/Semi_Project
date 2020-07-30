@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 </head>
 <body>
+<%
+	response.setCharacterEncoding("UTF-8");
+%>
 	<script type="text/javascript">
 		function removeBtn(seq) {
 			alert(seq);

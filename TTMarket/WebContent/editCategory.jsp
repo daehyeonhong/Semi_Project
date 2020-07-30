@@ -28,6 +28,7 @@
 	}
 </script>
 	<%
+	request.setCharacterEncoding("UTF-8");
 		int seq = Integer.parseInt(request.getParameter("seq"));
 	String sql = "select*from category where seq=?";
 	PreparedStatement preparedStatement = con.prepareStatement(sql);
