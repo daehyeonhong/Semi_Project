@@ -44,7 +44,7 @@ password="1234"
 <%--  조회 --%>
 <sql:query var="resultSet" dataSource="${dataSource}">
   select * from member where id=?
-  <sql:param value="<%=id %>"/>
+  <sql:param value="<%=id%>"/>
 </sql:query>
 
 <%--  회원  id가 존재하면  처리 --%>
