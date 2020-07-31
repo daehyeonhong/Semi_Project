@@ -4,14 +4,10 @@
 <%@page import="dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="java.net.URLDecoder"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-
-/* String cartId = session.getId(); */
-	String cartId = (String)session.getAttribute("sessionId");
-
+String cartId = (String) session.getAttribute("sessionId");
 String shipping_cartId = "";
 String shipping_name = "";
 String shipping_shippingDate = "";
@@ -58,12 +54,14 @@ if (cookies != null) {
 		</div>
 		<div class="row justify-content-between">
 			<div class="col-4" align="left">
-				<strong>배송 주소</strong><br> 성명 :<%=shipping_name%><br>
-				우편번호:<%=shipping_zipCode%><br> 주소:<%=shipping_addressName%><br>
+				<strong>배송 주소</strong>
+				<br>
+				<label>성명:<%=shipping_name%></label><br>
+				<label>우편번호 ]:<%=shipping_zipCode%></label><br>
+				<label>주소:<%=shipping_addressName%></label><br>
 			</div>
 			<div class="col-4" align="right">
-				<p>
-					<em>배송일:<%=shipping_shippingDate%></em>
+				<p><em>배송일:<%=shipping_shippingDate%></em></p>
 			</div>
 		</div>
 		<div>
@@ -105,11 +103,9 @@ if (cookies != null) {
 				</tr>
 			</table>
 			<!-- 확정메뉴 -->
-			<a href="./shippingInfo.jsp?cartId=<%=shipping_cartId%>"
-				class="btn btn-secondary" role="button">이전</a> <a
-				href="./purchase.jsp" class="btn btn-success" role="button">결제</a>
-			<a href="./checkOutCancelled.jsp" class="btn btn-secondary"
-				role="button">취소</a>
+			<a href="./shippingInfo.jsp?cartId=<%=shipping_cartId%>" class="btn btn-secondary" role="button">이전</a>
+			<a href="./purchase.jsp" class="btn btn-success" role="button">결제</a>
+			<a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />

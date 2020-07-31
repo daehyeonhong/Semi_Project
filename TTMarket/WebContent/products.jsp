@@ -1,68 +1,17 @@
-<%-- <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
-<!DOCTYPE html><html><head><meta charset="UTF-8">
-<title>상품목록</title>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-</head>
-<body>
-<jsp:include page="menu.jsp"/>
-<div class="jumbotron">
-   <div class="container">
-   	<h1 class="display-3">상품 목록</h1>
-   </div>
-</div>
-<%@include file="dbconn.jsp" %>
-<%
-   String sql="select * from product order by p_id";
-   PreparedStatement pstmt=con.prepareStatement(sql);
-   ResultSet rs=pstmt.executeQuery();
-%>
-<div class="container">
- <div class="row" align="center">
-    <%
-    	while(rs.next()){
-     %>		 
-    	<div class="col-md-4">
-    	  <img src="./resources/images/<%=rs.getString("p_fileName")%>"
-    	       style="width:100%">
-    	  <h3><%=rs.getString("p_name")%></h3>
-    	  <p><%=rs.getString("p_description") %></p>
-    	  <p><%=rs.getInt("p_unitPrice")%></p>
-    	  <p><a href="./product.jsp?id=<%=rs.getString("p_id")%>"
-    	    class="btn btn-secondary" role="button">상세정보 &raquo;</a>
-    	  </p>
-    	</div>
-    <%		 
-       }
-    %>
- </div>
-<hr>
-</div>
-<jsp:include page="footer.jsp"/>
-</body>
-</html> --%>
 <%@page import="dto.Product"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ page import="java.util.*"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>상품목록</title>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 #myBtn {
 	display: none;
@@ -83,31 +32,24 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
-	<!-- <div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">상품 목록</h1>
-		</div>
-	</div> -->
 	<%@include file="dbconn.jsp"%>
 	<%
 		String sql = "select * from product order by p_id";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();
 	%>
-
 	<div class="container">
 		<div class="container">
 			<h3 class="display-3">상품 목록</h3>
 		</div>
+		
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 			</ol>
-
-			<!-- Wrapper for slides -->
+			
 			<div class="carousel-inner">
 				<div class="item active">
 					<img src="./resources/images/P1234.png" alt="P1234"
@@ -125,39 +67,31 @@
 				</div>
 			</div>
 
-			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#myCarousel"
-				data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right"></span> <span
-				class="sr-only">Next</span>
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
 			</a>
 		</div>
 	</div>
 
-
-	<div
-		style="width: 50px; height: 50px; position: fixed; top: 200px; right: 30px;">
+	<div style="width: 50px; height: 50px; position: fixed; top: 200px; right: 30px;">
 		<%
 			List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
 
 		if (cartList == null)
 			cartList = new ArrayList<Product>();
 		%>
-		<a href="cart.jsp"><svg width="4em" height="4em"
-				viewBox="0 0 16 16" class="bi bi-cart4" fill="currentColor"
-				xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd"
-					d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-</svg><%=cartList.size()%></a>
-
+		<a href="cart.jsp">
+		<svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-cart4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  		<path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+		</svg><%=cartList.size()%></a>
 	</div>
 
-
-
-	<div class="container">
+ 	<div class="container">
 		<div class="row" align="center">
 			<%
 				while (rs.next()) {
@@ -169,8 +103,7 @@
 				<p><%=rs.getString("p_description")%></p>
 				<p><%=rs.getInt("p_unitPrice")%></p>
 				<p>
-					<a href="./product.jsp?id=<%=rs.getString("p_id")%>"
-						class="btn btn-secondary" role="button">상세정보 &raquo;</a>
+					<a href="./product.jsp?id=<%=rs.getString("p_id")%>" class="btn btn-secondary" role="button">상세정보 &raquo;</a>
 				</p>
 			</div>
 			<%
@@ -182,10 +115,8 @@
 	</div>
 	<jsp:include page="footer.jsp" />
 	<script>
-		//Get the button
-		var mybutton = document.getElementById("myBtn");
+		let mybutton = document.getElementById("myBtn");
 
-		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function() {
 			scrollFunction()
 		};

@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-request.setCharacterEncoding("UTF-8");
-	int seq = Integer.parseInt(request.getParameter("seq"));
+	request.setCharacterEncoding("UTF-8");
+int seq = Integer.parseInt(request.getParameter("seq"));
 String categoryName = request.getParameter("categoryName"), description = request.getParameter("description");
 %>
 <sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"

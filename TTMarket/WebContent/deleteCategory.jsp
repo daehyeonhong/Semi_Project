@@ -1,8 +1,6 @@
 <%@page import="java.sql.PreparedStatement"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="dbconn.jsp" %>
-
 <%
 	String categoryName= request.getParameter("categoryName");
 	String sql="delete from category where categoryName=?";
@@ -21,5 +19,4 @@
 	con.setAutoCommit(true);
 	
 	response.sendRedirect("editCategory.jsp?edit=delete");
-	
 %>

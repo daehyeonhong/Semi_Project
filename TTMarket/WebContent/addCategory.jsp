@@ -47,13 +47,13 @@
 				String seq = resultSet.getString(1);
 			%>
 			<tr>
-				<td><%=seq%> <input type="hidden" id="seq" name="seq"
-					value="<%=seq%>" /></td>
+				<td><%=seq%><input type="hidden" id="seq" name="seq" value="<%=seq%>" /></td>
 				<td><%=resultSet.getString(2)%></td>
 				<td><%=resultSet.getString(3)%></td>
-				<td><input type='button' value='삭제' id="remove"
-					onclick="removeBtn(<%=seq%>)" /> <input type='button' value='수정'
-					id="edit" onclick="editBtn(<%=seq%>)" /></td>
+				<td>
+					<input type='button' value='삭제' id="remove" onclick="removeBtn(<%=seq%>)" />
+					<input type='button' value='수정' id="edit" onclick="editBtn(<%=seq%>)" />
+				</td>
 			</tr>
 			<%
 				}
@@ -61,40 +61,36 @@
 		</table>
 		<hr />
 		<div class="text-right">
-			<form class="form-horizontal" action="processAddCategory.jsp"
-				method="post">
+			<form class="form-horizontal" action="processAddCategory.jsp" method="post">
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="categoryName" id="categoryName"
-							class="form-control" required="required"
-							placeholder="CategoryName" autofocus="autofocus" />
+						<input type="text" name="categoryName" id="categoryName" class="form-control" required="required" placeholder="CategoryName" autofocus="autofocus" />
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 설명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="description" id="description"
-							class="form-control" placeholder="Description" />
+						<input type="text" name="description" id="description" class="form-control" placeholder="Description" />
 					</div>
 				</div>
-				<input type="submit" value="등록" class="btn btn-primary" /> <input
-					type="reset" value="취소" class="btn btn-warning" /> <a
-					href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
+				<input type="submit" value="등록" class="btn btn-primary" />
+				<input type="reset" value="취소" class="btn btn-warning" />
+				<a href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
 			</form>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />
 	<%
 		if (resultSet != null) {
-		resultSet.close();
-	}
-	if (preparedStatement != null) {
-		preparedStatement.close();
-	}
-	if (con != null) {
-		con.close();
-	}
+			resultSet.close();
+		}
+		if (preparedStatement != null) {
+			preparedStatement.close();
+		}
+		if (con != null) {
+			con.close();
+		}
 	%>
 </body>
 </html>
