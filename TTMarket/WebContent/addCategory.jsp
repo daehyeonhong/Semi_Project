@@ -1,7 +1,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="dbconn.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -11,9 +10,9 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 </head>
 <body>
-<%
-	response.setCharacterEncoding("UTF-8");
-%>
+	<%
+		response.setCharacterEncoding("UTF-8");
+	%>
 	<script type="text/javascript">
 		function removeBtn(seq) {
 			alert(seq);
@@ -48,16 +47,13 @@
 				String seq = resultSet.getString(1);
 			%>
 			<tr>
-				<td>
-					<%=seq%>
-					<input type="hidden" id="seq" name="seq" value="<%=seq%>" />
-				</td>
+				<td><%=seq%> <input type="hidden" id="seq" name="seq"
+					value="<%=seq%>" /></td>
 				<td><%=resultSet.getString(2)%></td>
 				<td><%=resultSet.getString(3)%></td>
-				<td>
-					<input type='button' value='삭제' id="remove" onclick="removeBtn(<%=seq%>)" />
-					<input type='button' value='수정' id="edit" onclick="editBtn(<%=seq%>)" />
-				</td>
+				<td><input type='button' value='삭제' id="remove"
+					onclick="removeBtn(<%=seq%>)" /> <input type='button' value='수정'
+					id="edit" onclick="editBtn(<%=seq%>)" /></td>
 			</tr>
 			<%
 				}
@@ -70,18 +66,21 @@
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="categoryName" id="categoryName" class="form-control" required="required" placeholder="CategoryName" autofocus="autofocus" />
+						<input type="text" name="categoryName" id="categoryName"
+							class="form-control" required="required"
+							placeholder="CategoryName" autofocus="autofocus" />
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2">카테고리 설명: </label>
 					<div class="col-sm-3">
-						<input type="text" name="description" id="description" class="form-control" placeholder="Description" />
+						<input type="text" name="description" id="description"
+							class="form-control" placeholder="Description" />
 					</div>
 				</div>
-				<input type="submit" value="등록" class="btn btn-primary" />
-				<input type="reset" value="취소" class="btn btn-warning" />
-				<a href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
+				<input type="submit" value="등록" class="btn btn-primary" /> <input
+					type="reset" value="취소" class="btn btn-warning" /> <a
+					href="./products.jsp" class="btn btn-secondary">리스트로 &raquo;</a>
 			</form>
 		</div>
 	</div>
