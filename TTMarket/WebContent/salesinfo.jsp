@@ -69,83 +69,44 @@ if (rs.next()) {
 						<input type="hidden" id="pid<%=seq%>" value="<%=rs.getString("p_id")%>" />
 						<input type="hidden" id="seq<%=seq%>" value="<%=rs.getString("seq")%>" />
 					</td>
-
 					<td class="text-center"><em><%=rs.getString("p_name")%></em></td>
-
 					<td class="text-center"><%=rs.getInt("saleqty")%></td>
-
 					<td class="text-center"><%=rs.getInt("unitPrice")%></td>
-
 					<td class="text-center"><%=total%></td>
-
-					<td class="text-center"><select name="status"
-						id="status<%=seq%>">
-
+					<td class="text-center">
+						<select name="status" id="status<%=seq%>">
 							<option value="1" <%=rs.getInt("status") == 1 ? "selected" : ""%>>결재완료</option>
-
 							<option value="2" <%=rs.getInt("status") == 2 ? "selected" : ""%>>배송접수</option>
-
 							<option value="3" <%=rs.getInt("status") == 3 ? "selected" : ""%>>배송중</option>
-
 							<option value="4" <%=rs.getInt("status") == 4 ? "selected" : ""%>>배송완료</option>
-
 							<option value="5" <%=rs.getInt("status") == 5 ? "selected" : ""%>>수령완료</option>
-
-					</select> <input type="button" onclick="updateStatus(<%=seq++%>)" value="수정">
+						</select>
+						<input type="button" onclick="updateStatus(<%=seq++%>)" value="수정" />
 				</tr>
-
 				<%
 					}
 				%>
-
 				<tr>
-
 					<td></td>
-
 					<td></td>
-
 					<td class="text-right"><strong>총액:</strong></td>
-
 					<td class="text-center text-danger"><strong><%=new DecimalFormat("#,###").format(sum)%></strong></td>
-
 				</tr>
-
 			</table>
-
 			<!-- 확정메뉴 -->
-
-			<a href="./thankCustomer.jsp" class="btn btn-success" role="button">주문
-				완료</a> <a href="./checkOutCancelled.jsp" class="btn btn-secondary"
-				role="button">취소</a>
-
+			<a href="./thankCustomer.jsp" class="btn btn-success" role="button">주문 완료</a>
+			<a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a>
 		</div>
-
 	</div>
-
 	<jsp:include page="footer.jsp" />
-
 </body>
-
 </html>
-
-
-
 <script>
-
 function updateStatus(seq){
-
-	var no=document.getElementById("seq"+seq).value;
-
-	var status=document.getElementById("status"+seq).value;
-
-	var p_id=document.getElementById("pid"+seq).value;
-
-	alert('구매순번:'+seq+',상품코드:'+p_id+",상태:"+status);
-
-	location.href
-
-     ="updateSaleStatus.jsp?seq="+no+"&id="+p_id+"&status="+status;
-
+	let no=document.getElementById("seq"+seq).value;
+	let status=document.getElementById("status"+seq).value;
+	let p_id=document.getElementById("pid"+seq).value;
+	alert('구매순번:' + seq + ',상품코드:' + p_id + ",상태:" + status);
+	location.href = "updateSaleStatus.jsp?seq="+no+"&id="+p_id+"&status="+status;
 }
-
 </script>

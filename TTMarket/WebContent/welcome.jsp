@@ -10,7 +10,6 @@
 </head>
 <body>
 	<%@ include file="menu.jsp"%>
-	<!-- 전역변수(맴버변수,global변수) -->
 	<%!String greeting = "TTMarket에 오신 것을 환영합니다.";
 	String tagline = "Welcome to TTMarket!";%>
 	<div class="jumbotron">
@@ -20,7 +19,6 @@
 			</h1>
 		</div>
 	</div>
-
 	<div class="container">
 		<div class="text-center">
 			<h3><%=tagline%></h3>
