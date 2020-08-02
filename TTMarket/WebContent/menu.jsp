@@ -15,22 +15,25 @@
 			%>
 			<li style="padding-top: 7px; color: white">[관리자님]</li>
 			<li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath}/logout.jsp">로그아웃</a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/admin/logout.jsp">로그아웃</a>
 			</li>
 			<li class="nav-item">
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/products.jsp">상품목록</a>
 			</li>
 			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/addProduct.jsp">상품등록</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/addProduct.jsp">상품등록</a>
 			</li>
 			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/editProduct.jsp?edit=update">수정</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=update">수정</a>
 			</li>
 			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/editProduct.jsp?edit=delete">삭제</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=delete">삭제</a>
 			</li>
 			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/addCategory.jsp">카테고리 관리</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/addCategory.jsp">카테고리 관리</a>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/deliveryList.jsp">배송 관리</a>
 			</li>
 			<%
 				} else {
@@ -57,9 +60,6 @@
 			</c:choose>
 			<li class="nav-item">
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/products.jsp">상품목록</a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/deliveryInfo.jsp">배송조회</a>
 			</li>
 			<%
 				}

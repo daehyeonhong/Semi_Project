@@ -53,8 +53,7 @@ function detailClick(asd) {
 				//상품리스트 하나씩 출력
 				while (rs.next()) {
 					cnt++;
-					int total
-					= rs.getInt("unitprice") * rs.getInt("saleqty");
+					int total = rs.getInt("unitprice") * rs.getInt("saleqty");
 					sum += total;
 					int unitprices = rs.getInt("saleqty") * rs.getInt("unitprice");
 					String statuse = "";

@@ -9,16 +9,26 @@ INSERT INTO TTProduct(P_ID,P_NAME,P_UNITPRICE,P_DESCRIPTION,P_CATEGORY,P_MANUFAC
 INSERT INTO TTProduct(P_ID,P_NAME,P_UNITPRICE,P_DESCRIPTION,P_CATEGORY,P_MANUFACTURER,P_UNITSINSTOCK,P_CONDITION,P_FILENAME)
 				VALUES('P1236','Galaxy Tab S',12000,'Galaxy Tab','Tablet','Samsung',220,'NEW','P1236.png');
 
-INSERT INTO TTStatus()VALUES();
-INSERT INTO TTStatus()VALUES();
-INSERT INTO TTStatus()VALUES();
-INSERT INTO TTStatus()VALUES();
-INSERT INTO TTStatus()VALUES();
+INSERT INTO TTStatus (Status)VALUES('주문 완료');
+INSERT INTO TTStatus (Status)VALUES('배송 접수');
+INSERT INTO TTStatus (Status)VALUES('배송 중');
+INSERT INTO TTStatus (Status)VALUES('배송 완료');
+INSERT INTO TTStatus (Status)VALUES('수령 완료');
 
+DESC TTSALE
+DESC TTPRODUCT
+DESC TTPRODUCT
 DESC TTPRODUCT
 DESC TTSTATUS
-
-select*from ttmember
+select*from ttSALE
 
 insert into ttmember values('1','1','1','1','남자',' ew@naver.com','1','1','1','1','1','새싹','1')
 select*from ttmember where id='2'and password='2';
+select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from ttsale s,ttdelivery d,ttstatus st where s.sessionId=d.sessionId and s.status=st.statusNumber
+select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from ttsale s,ttdelivery d,ttstatus st where s.sessionId=d.sessionId and s.status=st.statusNumber
+select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address, s.status from ttsale s,ttdelivery d where s.sessionId=d.sessionId and s.status not in (5) order by s.seq
+
+select*from ttdelivery
+select*from ttstatus
+
+update ttsale set status=1;

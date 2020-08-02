@@ -41,7 +41,7 @@
 			<table>
 				<tr>
 					<td width="100%" align="right">
-						<a href="../loginAdmin.jsp" class="btn btn-primary">&laquo;관리자 로그인</a>
+						<a href="${pageContext.request.contextPath}/admin/loginAdmin.jsp" class="btn btn-primary">&laquo;관리자 로그인</a>
 					</td>
 				</tr>
 			</table>
