@@ -33,7 +33,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> -
 	<%
 		String id = request.getParameter("id");
 	System.out.println("넘어온 id:" + id);
-	String sql = "select * from product where p_id=?";
+	String sql = "select * from ttproduct where p_id=?";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	pstmt.setString(1, id);
 	ResultSet rs = pstmt.executeQuery();

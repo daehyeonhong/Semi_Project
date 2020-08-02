@@ -5,7 +5,7 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@include file="dbconn.jsp"%>
 <%
-	String sql = "select *  from sale s,delivery d,product p ";
+	String sql = "select *  from ttsale s,ttdelivery d,ttproduct p ";
 sql += " where s.productId=p.p_id and s.sessionId=d.sessionId order by s.seq";
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rs = pstmt.executeQuery();
@@ -40,7 +40,7 @@ if (rs.next()) {
 				}
 			%>
 			<%
-				sql = "select *  from sale s,delivery d,product p ";
+				sql = "select *  from ttsale s,ttdelivery d,ttproduct p ";
 			sql += " where s.productId=p.p_id ";
 			sql += " and s.sessionId=d.sessionId order by s.seq";
 			pstmt = con.prepareStatement(sql);

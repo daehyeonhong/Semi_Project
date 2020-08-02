@@ -32,7 +32,7 @@ function detailClick(asd) {
 		</div>
 		<div class="row justify-content-between">
 			<%
-				String sql = "select s.saleDate,s.sessionId,s.productId,s.unitPrice,s.saleQty,s.status,d.name ,d.zipCode,d.address from sale s, delivery d where s.sessionId=? and s.seq=d.seq";
+				String sql = "select s.saleDate,s.sessionId,s.productId,s.unitPrice,s.saleQty,s.status,d.name ,d.zipCode,d.address from ttsale s, ttdelivery d where s.sessionId=? and s.seq=d.seq";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customerId);
 			ResultSet rs = pstmt.executeQuery();

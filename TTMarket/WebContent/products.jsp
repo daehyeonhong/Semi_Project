@@ -34,7 +34,7 @@
 	<jsp:include page="menu.jsp" />
 	<%@include file="dbconn.jsp"%>
 	<%
-		String sql = "select * from product order by p_id";
+		String sql = "select * from ttproduct order by p_id";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();
 	%>

@@ -3,7 +3,7 @@
 <%@include file="dbconn.jsp"%>
 <%
 	int seq = Integer.parseInt((String) request.getParameter("seq"));
-String sql = "delete from category where seq=?";
+String sql = "delete from ttcategory where seq=?";
 PreparedStatement preparedStatement = con.prepareStatement(sql);
 preparedStatement.setInt(1, seq);
 int result = preparedStatement.executeUpdate();

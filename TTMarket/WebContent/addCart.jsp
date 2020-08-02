@@ -13,7 +13,7 @@ if (id == null || id.trim().equals("")) {//id값이 넘오지않았으면 상품
 	response.sendRedirect("products.jsp");
 	return;
 }
-String sql = "select * from product where p_id=?";
+String sql = "select * from ttproduct where p_id=?";
 //id값이 존재하면 상품처리 객체생성
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setString(1, id);

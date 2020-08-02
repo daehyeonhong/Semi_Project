@@ -51,7 +51,7 @@
 	try {
 		PreparedStatement pstmt = null;
 		for (int i = 0; i < list.size(); i++) {
-			String sql1 = "insert into sale(saledate, sessionId, productId, unitprice, saleqty, status ) values (?,?,?,?,?,1)";
+			String sql1 = "insert into ttsale(saledate, sessionId, productId, unitprice, saleqty, status ) values (?,?,?,?,?,1)";
 			pstmt = con.prepareStatement(sql1);
 
 			pstmt.setString(1, sdf.format(saleDate));
@@ -63,7 +63,7 @@
 			pstmt.executeUpdate();
 		}
 
-		String sql2 = "insert into delivery(sessionId,name,deliverydate,nation,zipcode,address) values(?,?,?,?,?,?)";
+		String sql2 = "insert into ttdelivery(sessionId,name,deliverydate,nation,zipcode,address) values(?,?,?,?,?,?)";
 		pstmt = con.prepareStatement(sql2);
 		pstmt.setString(1, shipping_cartId);
 		pstmt.setString(2, shipping_name);

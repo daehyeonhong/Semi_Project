@@ -46,7 +46,7 @@ String fname = (String) files.nextElement();
 String fileName = multi.getFilesystemName(fname);
 
 //쿼리객체 생성
-String sql = "insert into product values (?,?,?,?,?,?,?,?,?)";
+String sql = "insert into ttproduct values (?,?,?,?,?,?,?,?,?)";
 PreparedStatement pstmt = con.prepareStatement(sql);
 //바인딩변수 설정
 pstmt.setString(1, productId);

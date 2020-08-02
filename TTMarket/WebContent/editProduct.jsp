@@ -22,7 +22,7 @@
 		<div class="row" align="center">
 			<%@ include file="dbconn.jsp"%>
 			<%
-				String sql = "select * from product";
+				String sql = "select * from ttproduct";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

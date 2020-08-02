@@ -7,8 +7,6 @@
 <%
 try {
 con.setAutoCommit(false);
-/* String sql = "";
-PreparedStatement preparedStatement = con.prepareStatement(sql); */
 request.setCharacterEncoding("UTF-8");
 	String price = request.getParameter("price"),
 				 card1 = request.getParameter("cardId1"),
@@ -26,7 +24,7 @@ out.print(price + ", ," + card1 + ", " + card2 + ", " + card3 + ", " + card4 + "
 List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
 if (cartList != null) {
 		for(Product product : cartList) {
-			String sql = "select p_unitsInStock from product where p_id=?";
+			String sql = "select p_unitsInStock from ttproduct where p_id=?";
 			int cartListQtt = product.getQuantity(), productStock = 0;
 			String id = product.getProductId();
 			System.out.print(id);
@@ -46,7 +44,7 @@ if (cartList != null) {
 				} else {
 					productStock -= cartListQtt;
 					System.out.print(productStock);
-					sql = "update product set p_unitsInStock=? where p_id=?";
+					sql = "update ttproduct set p_unitsInStock=? where p_id=?";
 					preparedStatement = con.prepareStatement(sql);
 					preparedStatement.setInt(1, productStock);
 					preparedStatement.setString(2, id);

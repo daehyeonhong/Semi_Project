@@ -40,7 +40,7 @@
 				</tr>
 			</thead>
 			<%
-				String sql = "select*from category";
+				String sql = "select*from ttcategory";
 			PreparedStatement preparedStatement = con.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {

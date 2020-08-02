@@ -11,7 +11,7 @@ String categoryName = request.getParameter("categoryName"), description = reques
 	password="1234" />
 <c:catch var="except">
 	<sql:update dataSource="${dataSource}" var="result">
-	update category set categoryName=?, description=? where seq=?
+	update ttcategory set categoryName=?, description=? where seq=?
 		<sql:param value="<%=categoryName%>" />
 		<sql:param value="<%=description%>" />
 		<sql:param value="<%=seq%>" />
