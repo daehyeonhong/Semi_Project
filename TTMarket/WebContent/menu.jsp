@@ -30,7 +30,7 @@
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/editProduct.jsp?edit=delete">삭제</a>
 			</li>
 			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/addCategory.jsp">카테고리 수정</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/addCategory.jsp">카테고리 관리</a>
 			</li>
 			<%
 				} else {

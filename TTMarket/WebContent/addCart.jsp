@@ -33,7 +33,7 @@ if (rs.next()) {
 }
 //해당id에 맞는 상품정보 얻기
 if (product == null) {//해당id로 상품 존재하지않으면 에러페이지로 이동.
-	response.sendRedirect("exceptionNoProductId.jsp");
+	response.sendRedirect("exception/noProductId.jsp");
 	return;
 }
 

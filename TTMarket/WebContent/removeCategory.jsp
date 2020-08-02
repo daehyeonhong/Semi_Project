@@ -8,8 +8,8 @@ PreparedStatement preparedStatement = con.prepareStatement(sql);
 preparedStatement.setInt(1, seq);
 int result = preparedStatement.executeUpdate();
 if (result > 0) {
-	response.sendRedirect("addCategory.jsp");
+	out.print("<script>alert('삭제되었습니다!');location.href = 'addCategory.jsp';</script>");
 } else {
-	response.sendRedirect("exceptionNoPage.jsp");
+	out.print("<script>alert('삭제실패!');location.href = '${pageContext.request.contextPath}/noPage.jsp';</script>");
 }
 %>

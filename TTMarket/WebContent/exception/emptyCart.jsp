@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 <title>주문 오류</title>
 </head>
 <body>
-	<jsp:include page="menu.jsp" />
+	<jsp:include page="/menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
 			<h2 class="alert alert-danger">장바구니가 비어있습니다.</h2>
@@ -19,7 +19,7 @@
 	<div class="container">
 		<p><%=request.getRequestURL()%></p>
 		<p>
-			<a href="products.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
+			<a href="${pageContext.request.contextPath}/products.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
 		</p>
 	</div>
 </body>

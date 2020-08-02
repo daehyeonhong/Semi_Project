@@ -47,7 +47,7 @@
 					<%
 					}
 				} else {
-					response.sendRedirect("exceptionEmptyCart.jsp");
+					response.sendRedirect("${pageContext.request.contextPath}/emptyCart.jsp");
 				}
 				%>
 				<input type="hidden" id="price" name="price" value="price" /><br />

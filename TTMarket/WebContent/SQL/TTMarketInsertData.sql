@@ -19,3 +19,6 @@ DESC TTPRODUCT
 DESC TTSTATUS
 
 select*from ttmember
+
+insert into ttmember values('1','1','1','1','남자',' ew@naver.com','1','1','1','1','1','새싹','1')
+select*from ttmember where id='2'and password='2';

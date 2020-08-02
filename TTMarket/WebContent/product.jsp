@@ -2,7 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page errorPage="exceptionNoProductId.jsp"%>
+<%@page errorPage="${pageContext.request.contextPath}/noProductId.jsp"%>
 <%@include file="dbconn.jsp"%>
 <!DOCTYPE html>
 <html>

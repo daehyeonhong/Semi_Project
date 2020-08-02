@@ -12,7 +12,7 @@ if (id == null || id.trim().equals("")) {
 ProductRepository dao = ProductRepository.getInstance();
 Product product = dao.getProductById(id);
 if (product == null)
-	response.sendRedirect("exceptionNoProductId.jsp");
+	response.sendRedirect("${pageContext.request.contextPath}/noProductId.jsp");
 
 List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
 Product goodsQnt = new Product();

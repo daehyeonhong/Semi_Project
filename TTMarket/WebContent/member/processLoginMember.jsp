@@ -11,7 +11,7 @@ String password = request.getParameter("password");
 	password="1234" />
 <%-- 조회 --%>
 <sql:query dataSource="${dataSource}" var="resultSet">
-  select * from ttmember where id=? and password=?
+  select*from ttmember where id=?and password=?
   <sql:param value="<%=id%>" />
 	<sql:param value="<%=password%>" />
 </sql:query>
@@ -22,6 +22,3 @@ String password = request.getParameter("password");
 	<c:redirect url="resultMember.jsp?msg=2" />
 </c:forEach>
 <c:redirect url="loginMember.jsp?error=1" />
-
-
-

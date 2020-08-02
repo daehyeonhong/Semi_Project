@@ -61,12 +61,12 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	<%--db 저장 --%>
 	<c:catch var="except">
 		<sql:update dataSource="${dataSource}" var="resultSet">
- insert into ttmember values(?,?,?,?,?,?,?,?,?,?,?,'새싹',?)
+ insert into ttmember values(?,?,?,?,?,?,?,?,?,?,?,?,'새싹')
  <sql:param value="<%=id%>" />
 			<sql:param value="<%=password%>" />
 			<sql:param value="<%=name%>" />
-			<sql:param value="<%=birth%>" />
 			<sql:param value="<%=gender%>" />
+			<sql:param value="<%=birth%>" />
 			<sql:param value="<%=mail%>" />
 			<sql:param value="<%=phone%>" />
 			<sql:param value="<%=postcode%>" />

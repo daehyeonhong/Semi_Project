@@ -43,7 +43,7 @@ body {
 			alert('aa' + $('#id').val());
 			$.ajax({
 				type : 'GET',//요청메소드 방식
-				url : 'idcheckAjax.jsp?id=' + $('#id').val(),//val('success');
+				url : 'idcheck.jsp?id=' + $('#id').val(),//val('success');
 				dataType : "text",//요청 결과 값의 타입
 				success : function(data) {//콜백함수
 					alert(data);

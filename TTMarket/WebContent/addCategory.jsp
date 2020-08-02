@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리 등록</title>
+<title>카테고리 관리</title>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 </head>
 <body>
@@ -14,10 +14,6 @@
 		response.setCharacterEncoding("UTF-8");
 	%>
 	<script type="text/javascript">
-		function removeBtn(seq) {
-			alert(seq);
-			location.href = "removeCategory.jsp?seq=" + seq;
-		}
 		function editBtn(seq) {
 				location.href = confirm('정말 변경하시겠습니까?') ? ("editCategory.jsp?seq=" + seq) : ("addCategory.jsp");
 		}
@@ -25,7 +21,7 @@
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">카테고리 등록</h1>
+			<h1 class="display-3">카테고리 관리</h1>
 		</div>
 	</div>
 	<div class="container">
@@ -35,8 +31,7 @@
 				<tr>
 					<th>카테고리 번호</th>
 					<th>카테고리 명</th>
-					<th>카테고리 설명</th>
-					<th>카테고리 관리</th>
+					<th colspan="2">카테고리 설명</th>
 				</tr>
 			</thead>
 			<%
@@ -49,10 +44,11 @@
 			<tr>
 				<td><%=seq%><input type="hidden" id="seq" name="seq" value="<%=seq%>" /></td>
 				<td><%=resultSet.getString(2)%></td>
-				<td><%=resultSet.getString(3)%></td>
 				<td>
-					<input type='button' value='삭제' id="remove" onclick="removeBtn(<%=seq%>)" />
-					<input type='button' value='수정' id="edit" onclick="editBtn(<%=seq%>)" />
+					<%=resultSet.getString(3)%>
+				</td>
+				<td style="width: 10px">
+					<input class="btn btn-info" type='button' value='수정' id="edit" onclick="editBtn(<%=seq%>)" />
 				</td>
 			</tr>
 			<%

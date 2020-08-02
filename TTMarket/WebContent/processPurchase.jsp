@@ -40,7 +40,7 @@ if (cartList != null) {
 			out.print("DB<br />");
 			out.print("Stock: " + productStock + "<br />");
 				if (productStock < cartListQtt) {
-					response.sendRedirect("./exceptionPurchaseFail.jsp");
+					response.sendRedirect("${pageContext.request.contextPath}/purchaseFail.jsp");
 				} else {
 					productStock -= cartListQtt;
 					System.out.print(productStock);
@@ -56,7 +56,7 @@ if (cartList != null) {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("thankCustomer.jsp");
 		requestDispatcher.forward(request, response);
 	} else {
-		response.sendRedirect("./exceptionEmptyCart.jsp");
+		response.sendRedirect("${pageContext.request.contextPath}/emptyCart.jsp");
 	}
 } catch (Exception e) {
 		e.printStackTrace();
