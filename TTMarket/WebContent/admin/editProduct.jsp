@@ -1,21 +1,33 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<title>상품 편집</title>
-</head>
 <%
 	String edit = request.getParameter("edit");
 %>
+<c:set var="edit" value="<%=edit%>"/>
+<c:if test="${edit=='update'}">
+<title>상품 편집</title>
+</c:if>
+<c:if test="${edit=='delete'}">
+<title>상품 삭제</title>
+</c:if>
+</head>
 <body>
 	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">상품 편집</h1>
+			<c:if test="${edit=='update'}">
+				<h1 class="display-3">상품 편집</h1>
+			</c:if>
+			<c:if test="${edit=='delete'}">
+				<h1 class="display-3">상품 삭제</h1>
+			</c:if>
 		</div>
 	</div>
 	<div class="container">

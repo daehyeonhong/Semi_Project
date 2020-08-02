@@ -7,6 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<title>구매 내역</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -105,9 +106,7 @@ function detailClick(asd) {
 					<td class="text-center text-danger"><strong><%=new DecimalFormat("#,###").format(sum)%></strong></td>
 				</tr>
 			</table>
-			<!-- 확정메뉴 -->
-			<a href="./thankCustomer.jsp" class="btn btn-success" role="button">주문 완료</a>
-			<a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a>
+			<a href="${pageContext.request.contextPath}/products.jsp" class="btn btn-success" role="button">상품목록</a>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />

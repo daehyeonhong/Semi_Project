@@ -9,21 +9,34 @@
 <head>
 <meta charset="UTF-8">
 <title>상품상세정보</title>
-<script>
-	/* javascript 함수 선언 function 함수명(아규먼트){실행문;} */
-	function addToCart() {
-		if (confirm("상품을 장바구니에 추가하시겠습니까?")) {
-			document.addForm.submit();//action경로로 이동처리
-		} else {
-			document.addForm.reset();//초기화 처리
-		}
-	}
-</script>
-<!-- <link rel="stylesheet" 
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> -->
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 </head>
 <body>
+	<%
+		String sessionId = (String) session.getAttribute("sessionId");
+	%>
+	<script>
+		/* javascript 함수 선언 function 함수명(아규먼트){실행문;} */
+		function addToCart(sessionId) {
+			if (sessionId != null) {
+				if (confirm("상품을 장바구니에 추가하시겠습니까?")) {
+					document.addForm.submit();//action경로로 이동처리
+				} else {
+					document.addForm.reset();//초기화 처리
+				}
+			} else {
+				alert('로그인 후 이용 바랍니다.');
+			}
+		}
+		
+		function cart (sessionId) {
+			if (sessionId != null) {
+				location.href='./cart.jsp';
+			} else {
+				alert('로그인 후 이용 바랍니다.');
+			}
+		}
+	</script>
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
@@ -32,7 +45,6 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> -
 	</div>
 	<%
 		String id = request.getParameter("id");
-	System.out.println("넘어온 id:" + id);
 	String sql = "select * from ttproduct where p_id=?";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	pstmt.setString(1, id);
@@ -80,8 +92,8 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> -
 				</p>
 				<h4><%=product.getUnitPrice()%>원</h4>
 				<form name="addForm" action="./addCart.jsp?id=<%=product.getProductId()%>" method="post">
-					<a href="#" class="btn btn-info" onclick="addToCart()">상품주문&raquo;</a>
-					<a href="./cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
+					<a href="#" class="btn btn-info" onclick="addToCart(<%=sessionId%>)">상품주문&raquo;</a>
+					<a href="#" class="btn btn-warning" onclick="cart(<%=sessionId%>)">장바구니 &raquo;</a>
 					<a href="./products.jsp" class="btn btn-secondary">상품 목록&raquo;</a>
 				</form>
 			</div>

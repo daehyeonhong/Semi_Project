@@ -7,7 +7,7 @@
 <title>주문 오류</title>
 </head>
 <body>
-	<jsp:include page="/menu.jsp" />
+	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
 			<h2 class="alert alert-danger">장바구니가 비어있습니다.</h2>
