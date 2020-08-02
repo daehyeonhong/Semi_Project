@@ -52,18 +52,15 @@
 			
 			<div class="carousel-inner">
 				<div class="item active">
-					<img src="./resources/images/P1234.png" alt="P1234"
-						style="width: 100%; height: 400px;">
+					<img src="./resources/images/P1234.png" alt="P1234" style="width: 100%; height: 400px;">
 				</div>
 
 				<div class="item">
-					<img src="./resources/images/P1235.png" alt="P1235"
-						style="width: 100%; height: 400px;">
+					<img src="./resources/images/P1235.png" alt="P1235" style="width: 100%; height: 400px;">
 				</div>
 
 				<div class="item">
-					<img src="./resources/images/P1236.png" alt="P1236"
-						style="width: 100%; height: 400px;">
+					<img src="./resources/images/P1236.png" alt="P1236" style="width: 100%; height: 400px;">
 				</div>
 			</div>
 

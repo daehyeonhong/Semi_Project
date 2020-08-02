@@ -24,3 +24,5 @@ hs_err_pid*
 /.metadata/
 /새폴더
 /Servers
+*.Servers/
+Servers/
