@@ -88,6 +88,7 @@
 		 		<option value="p_category">카테고리</option>
 		 		<option value="p_condition">상태</option>
 		 		<option value="p_manufacturer">제조사</option>
+		 		<option value="p_description">상세설명</option>
 		 	</select>
 	    <input class="form-control mr-sm-2" type="text" name="text" placeholder="Search" />
 	    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>

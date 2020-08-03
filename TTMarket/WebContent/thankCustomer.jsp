@@ -104,6 +104,15 @@
 		</div>
 	</div>
 	<div class="container">
+		<h2 class="alert alert-success">
+			<strong><%=shipping_name%></strong>님 주문해 주셔서 감사합니다.
+		</h2>
+		<p>
+			주문은
+			<%=shipping_shippingDate%>에 배송될 예정입니다.
+		</p>
+	</div>
+	<div class="container">
 		<div class="row">
 			<table width="100%">
 				<tr>

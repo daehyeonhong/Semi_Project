@@ -25,6 +25,9 @@
 	<c:when test="${items=='p_condition'}">
 		<title>상품 상태 검색</title>
 	</c:when>
+	<c:when test="${items=='p_description'}">
+		<title>상품 설명 검색</title>
+	</c:when>
 	<c:otherwise>
 		<title>제조사 검색</title>
 	</c:otherwise>
