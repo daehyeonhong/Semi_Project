@@ -151,6 +151,7 @@ function detailClick(asd) {
 					+ " from ttsale s,ttdelivery d where s.sessionId=d.sessionId and"
 					+ " s.deliveryseq=d.seq and s.status not in (5) and s.sessionid=? group by s.seq";
 			PreparedStatement pstmt = con.prepareStatement(sql);
+			System.out.print(customerId);
 			pstmt.setString(1, customerId);
 			ResultSet rs = pstmt.executeQuery();
 			%>

@@ -109,7 +109,7 @@
 				<tr>
 					<td align="left">
 						<a href="./products.jsp" class="btn btn-secondary">&laquo;상품 목록</a>
-						<a href="./deliveryList.jsp" class="btn btn-primary">배송 목록&raquo;</a>
+						<a href="./deliveryInfo.jsp" class="btn btn-primary">배송 목록&raquo;</a>
 					</td>
 				</tr>
 			</table>

@@ -80,14 +80,16 @@
 				}
 			%>
 		</ul>
-	 	<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/processSearch.jsp" method="post">
-		 	<select class="form-control mr-sm-2" name="option">
-		 		<option value="unified">통합검색</option>
+	 	<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/SearchListAction.search" method="post">
+		 	<select class="form-control mr-sm-2" name="items">
+		 		<!-- <option value="unified">통합검색</option> -->
 		 		<option value="p_name">상품명</option>
+		 		<option value="p_id">상품코드</option>
 		 		<option value="p_category">카테고리</option>
 		 		<option value="p_condition">상태</option>
+		 		<option value="p_manufacturer">제조사</option>
 		 	</select>
-	    <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search" />
+	    <input class="form-control mr-sm-2" type="text" name="text" placeholder="Search" />
 	    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
   	</form>
 	</div>

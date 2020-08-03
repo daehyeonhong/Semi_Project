@@ -58,3 +58,8 @@ select s.deliveryseq,s.saleDate,s.productId,s.saleQty,d.name,
 select ifnull(max(seq),0) from ttdelivery
 insert into ttdelivery(sessionId,name,deliverydate,nation,zipcode,address) values('1','1','1','1','1','1');
 insert into ttsale(saledate,sessionId,productId,unitprice,saleqty,deliveryseq,status) values ('123','1','1','1','1',1,1)
+
+SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.NATION,D.ZIPCODE,D.ADDRESS,S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.DELIVERYSEQ=D.SEQ AND S.STATUS NOT IN(5) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID
+SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.NATION,D.ZIPCODE,D.ADDRESS,S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.DELIVERYSEQ=D.SEQ GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID;
+
+SELECT*FROM TTPRODUCT WHERE p_id LIKE upper('%P%')ORDER BY P_ID DESC
