@@ -87,7 +87,7 @@ if (cartList == null || (cartList.size() == 0)) {
 						<a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger" onclick="deleteCart()">삭제하기</a>
 					</td>
 					<td align="right">
-						<a class="btn btn-success" style="color: #fff" onclick="checkCart(<%=cartList.size()%>)">주문하기</a>
+						<a class="btn btn-success" style="color: #FFF" onclick="checkCart(<%=cartList.size()%>)">주문하기</a>
 					</td>
 				</tr>
 			</table>

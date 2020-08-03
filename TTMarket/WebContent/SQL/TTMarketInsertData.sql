@@ -28,7 +28,33 @@ select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nati
 select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from ttsale s,ttdelivery d,ttstatus st where s.sessionId=d.sessionId and s.status=st.statusNumber
 select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address, s.status from ttsale s,ttdelivery d where s.sessionId=d.sessionId and s.status not in (5) order by s.seq
 
+select*from ttSALE
 select*from ttdelivery
 select*from ttstatus
+select*from ttdelivery d, ttsale s group by s.seq order by d.seq 
 
 update ttsale set status=1;
+
+select d.seq,s.saleDate,s.sessionId,s.productId,s.unitPrice,s.saleQty,s.status,d.name,d.zipCode,d.address
+from ttsale s, ttdelivery d 
+where s.sessionId=d.sessionid 
+and s.sessionId='1' 
+;
+
+select * from ttsale;
+select * from ttdelivery;
+
+select distinct s.deliveryseq,s.saleDate,s.productId,s.saleQty,s.status,d.name
+			 from ttsale s,ttdelivery d where s.sessionId=d.sessionId
+			and s.deliveryseq=d.seq and s.status not in (5) and s.sessionid='1' group by s.seq
+			 order by s.seq
+
+select s.deliveryseq,s.saleDate,s.productId,s.saleQty,d.name,
+			 d.deliveryDate,d.nation,d.zipCode,d.address, s.status
+			 from ttsale s,ttdelivery d where s.sessionId=d.sessionId
+			 and s.status not in (5) group by s.deliveryseq
+			 order by s.seq
+			 
+select ifnull(max(seq),0) from ttdelivery
+insert into ttdelivery(sessionId,name,deliverydate,nation,zipcode,address) values('1','1','1','1','1','1');
+insert into ttsale(saledate,sessionId,productId,unitprice,saleqty,deliveryseq,status) values ('123','1','1','1','1',1,1)

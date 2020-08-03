@@ -67,4 +67,3 @@ if (cartList != null) {
 		}
 	}
 %>
-<%-- <jsp:forward page="/thankCustomer.jsp"/> --%>

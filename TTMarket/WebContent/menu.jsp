@@ -31,20 +31,19 @@
 			<li class="nav-item">
 				<div class="btn-group">
 					<label class="navbar-brand dropdown-toggle" data-toggle="dropdown">
-						<span>상품 관리</span>
+						<span>관리자 메뉴</span>
 		      </label>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/addProduct.jsp">상품등록</a>
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=update">수정</a>
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=delete">삭제</a>
-	      	</div>
+		      <ul class="dropdown-menu">
+		      	<li class="dropdown-header">상품 관리</li>
+		      	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/addProduct.jsp">상품등록</a></li>
+		      	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=update">수정</a></li>
+		      	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=delete">삭제</a></li>
+		      	<li class="divider"></li>
+		      	<li class="dropdown-header">??? 관리</li>
+      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/addCategory.jsp">카테고리 관리</a></li>
+      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/deliveryList.jsp">배송 관리</a></li>
+		      </ul>
 	      </div>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/addCategory.jsp">카테고리 관리</a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/deliveryList.jsp">배송 관리</a>
 			</li>
 			<%
 				} else {

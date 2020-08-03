@@ -57,7 +57,7 @@ if (cookies != null) {
 				<strong>배송 주소</strong>
 				<br>
 				<label>성명:<%=shipping_name%></label><br>
-				<label>우편번호 ]:<%=shipping_zipCode%></label><br>
+				<label>우편번호:<%=shipping_zipCode%></label><br>
 				<label>주소:<%=shipping_addressName%></label><br>
 			</div>
 			<div class="col-4" align="right">

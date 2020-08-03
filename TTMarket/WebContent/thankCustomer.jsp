@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="javax.print.PrintException"%>
 <%@page import="dto.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -44,14 +46,25 @@
 		}
 	}
 		ArrayList<Product> list = (ArrayList<Product>) session.getAttribute("cartlist");
-
+		int deliverySeq = 0;
+		try {
+			PreparedStatement pstmtD = null;
+			String sql = "select ifnull(max(seq),0) from ttdelivery";
+			pstmtD = con.prepareStatement(sql);
+			ResultSet resultSet = pstmtD.executeQuery();
+			if(resultSet.next())
+			deliverySeq = resultSet.getInt(1) + 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	con.setAutoCommit(false);
 	Date saleDate = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	try {
 		PreparedStatement pstmt = null;
 		for (int i = 0; i < list.size(); i++) {
-			String sql1 = "insert into ttsale(saledate, sessionId, productId, unitprice, saleqty, status ) values (?,?,?,?,?,1)";
+			String sql1 = "insert into ttsale(saledate,sessionId,productId,unitprice,saleqty,deliveryseq,status) values (?,?,?,?,?,?,1)";
 			pstmt = con.prepareStatement(sql1);
 
 			pstmt.setString(1, sdf.format(saleDate));
@@ -59,6 +72,7 @@
 			pstmt.setString(3, list.get(i).getProductId());
 			pstmt.setInt(4, list.get(i).getUnitPrice());
 			pstmt.setInt(5, list.get(i).getQuantity());
+			pstmt.setInt(6, deliverySeq);
 
 			pstmt.executeUpdate();
 		}
@@ -90,13 +104,16 @@
 		</div>
 	</div>
 	<div class="container">
-		<h2 class="alert alert-danger">주문해 주셔서 감사합니다.</h2>
-		<p>주문은 <%=shipping_shippingDate%>에 배송될 예정입니다.</p>
-		<p>주문번호:<%=shipping_cartId%></p>
-	</div>
-	<div class="container">
-		<p><a href="./products.jsp" class="btn btn-secondary">&laquo;상품목록</a></p>
-		<p><a href="./deliveryInfo.jsp?id=<%=shipping_cartId%>" class="btn btn-secondary">&laquo;배송조회</a></p>
+		<div class="row">
+			<table width="100%">
+				<tr>
+					<td align="left">
+						<a href="./products.jsp" class="btn btn-secondary">&laquo;상품 목록</a>
+						<a href="./deliveryList.jsp" class="btn btn-primary">배송 목록&raquo;</a>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<%
 		//세션정보 삭제
