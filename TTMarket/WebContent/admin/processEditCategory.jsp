@@ -19,7 +19,7 @@ String categoryName = request.getParameter("categoryName"), description = reques
 </c:catch>
 <c:if test="${empty except}">
 	<c:if test="${result>0}">
-		<c:redirect url="addCategory.jsp" />
+		<c:redirect url="updateCategory.jsp" />
 	</c:if>
 </c:if>
 ${except}

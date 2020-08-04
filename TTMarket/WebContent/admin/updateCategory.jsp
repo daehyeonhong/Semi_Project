@@ -15,7 +15,7 @@
 	%>
 	<script type="text/javascript">
 		function editBtn(seq) {
-				location.href = confirm('정말 변경하시겠습니까?') ? ("editCategory.jsp?seq=" + seq) : ("addCategory.jsp");
+				location.href = confirm('정말 변경하시겠습니까?') ? ("editCategory.jsp?seq=" + seq) : ("updateCategory.jsp");
 		}
 	</script>
 	<jsp:include page="../menu.jsp" />

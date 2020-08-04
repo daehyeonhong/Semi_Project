@@ -14,7 +14,7 @@
 	<script type="text/javascript">
 		function cancelBtn() {
 			alert('요청이 취소되었습니다.');
-			location.href='addCategory.jsp';
+			location.href='updateCategory.jsp';
 		}
 		
 		function removeBtn(seq) {

@@ -11,5 +11,5 @@ PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setString(1, categoryName);
 pstmt.setString(2, description);
 int result = pstmt.executeUpdate();
-response.sendRedirect("addCategory.jsp");
+response.sendRedirect("updateCategory.jsp");
 %>

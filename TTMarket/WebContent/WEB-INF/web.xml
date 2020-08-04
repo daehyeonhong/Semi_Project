@@ -12,7 +12,7 @@
       <description></description>
       <url-pattern>/admin/addProduct.jsp</url-pattern>
       <url-pattern>/admin/editProduct.jsp</url-pattern>
-      <url-pattern>/admin/addCategory.jsp</url-pattern>
+      <url-pattern>/admin/updateCategory.jsp</url-pattern>
       <url-pattern>/admin/loginAdmin.jsp</url-pattern>
       <url-pattern>/admin/deliveryList.jsp</url-pattern>
     </web-resource-collection>

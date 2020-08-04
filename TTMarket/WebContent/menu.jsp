@@ -40,7 +40,7 @@
 		      	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=delete">삭제</a></li>
 		      	<li class="divider"></li>
 		      	<li class="dropdown-header">───────</li>
-      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/addCategory.jsp">카테고리 관리</a></li>
+      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/updateCategory.jsp">카테고리 관리</a></li>
       			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/deliveryList.jsp">배송 관리</a></li>
 		      </ul>
 	      </div>
