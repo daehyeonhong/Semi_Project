@@ -13,7 +13,7 @@
 		<ul class="navbar-nav mr-auto">
 		<li>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/welcome.jsp">Home</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/welcome.jsp"><img alt="" style="width: 40px" src="${pageContext.request.contextPath}/resources/images/home_icon_sil.png"></a>
 			</div>
 		</li>
 			<%
@@ -39,7 +39,7 @@
 		      	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=update">수정</a></li>
 		      	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/editProduct.jsp?edit=delete">삭제</a></li>
 		      	<li class="divider"></li>
-		      	<li class="dropdown-header">??? 관리</li>
+		      	<li class="dropdown-header">───────</li>
       			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/addCategory.jsp">카테고리 관리</a></li>
       			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/deliveryList.jsp">배송 관리</a></li>
 		      </ul>
@@ -54,7 +54,7 @@
 						<a class="nav-link" href="${pageContext.request.contextPath}/member/loginMember.jsp">로그인</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/member/addMember.jsp">회원가입</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/member/agreement.jsp">회원가입</a>
 					</li>
 					<li class="nav-item">
 						<a class="navbar-brand" href="${pageContext.request.contextPath}/products.jsp">상품목록</a>
@@ -68,7 +68,16 @@
 						<a class="nav-link" href="${pageContext.request.contextPath}/member/logoutMember.jsp">로그아웃</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/member/updateMember.jsp">회원수정</a>
+						<div class="btn-group">
+							<label class="navbar-brand dropdown-toggle" data-toggle="dropdown">
+								<span>회원 정보 수정</span>
+				      </label>
+				      <ul class="dropdown-menu">
+		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/updateMember.jsp">회원수정</a></li>
+		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/updatePassword.jsp">비밀번호 변경</a></li>
+		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/deleteMember.jsp">회원 탈퇴</a></li>
+				      </ul>
+		      	</div>
 					</li>
 					<li class="nav-item">
 						<a class="navbar-brand" href="${pageContext.request.contextPath}/products.jsp">상품목록</a>
@@ -82,7 +91,7 @@
 		</ul>
 	 	<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/SearchListAction.search" method="post">
 		 	<select class="form-control mr-sm-2" name="items">
-		 		<!-- <option value="unified">통합검색</option> -->
+		 		<option value="unified" disabled="disabled">통합검색</option>
 		 		<option value="p_name">상품명</option>
 		 		<option value="p_id">상품코드</option>
 		 		<option value="p_category">카테고리</option>

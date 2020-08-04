@@ -18,6 +18,7 @@ String password = request.getParameter("password");
 <c:forEach var="row" items="${resultSet.rows}">
 	<%
 		session.setAttribute("sessionId", id);
+		session.setAttribute("loginToken", true);
 	%>
 	<c:redirect url="resultMember.jsp?msg=2" />
 </c:forEach>

@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `TTProduct` (
   `p_description` TEXT NULL DEFAULT NULL,
   `p_category` VARCHAR(20) NULL DEFAULT NULL,
   `p_manufacturer` VARCHAR(20) NULL DEFAULT NULL,
-  `p_unitsinstock` MEDIUMTEXT NULL DEFAULT NULL,
+  `p_unitsinstock` INT(11) NULL DEFAULT NULL,
   `p_condition` VARCHAR(20) NULL DEFAULT NULL,
   `p_fileName` VARCHAR(20) NULL DEFAULT NULL,
   PRIMARY KEY (`p_id`))

@@ -16,12 +16,12 @@ hr{border-color: white;}
 <div id="title11">
   <b id="b11" style="font-size: 40; color: white;">TTMarket</b>
 	<div id="img111">
-       <a href="https://www.instagram.com/"><img  src="${pageContext.request.contextPath}/resources/images/1.gif"></a>
-       <a href="https://www.youtube.com/"><img  src="${pageContext.request.contextPath}/resources/images/2.gif"></a>
-       <a href="https://twitter.com/?lang=ko"><img  src="${pageContext.request.contextPath}/resources/images/3.gif"></a>
-       <a href="https://ko-kr.facebook.com/"><img  src="${pageContext.request.contextPath}/resources/images/4.gif"></a>
-       <a href="https://www.kakaocorp.com/service/KakaoTalk?lang=ko"><img  src="${pageContext.request.contextPath}/resources/images/5.gif"></a>
-       <a href="https://www.pinterest.co.kr/"><img  src="${pageContext.request.contextPath}/resources/images/6.gif"></a>
+       <a href="https://www.instagram.com/"><img  src="./resources/images/1.gif"></a>
+       <a href="https://www.youtube.com/"><img  src="./resources/images/2.gif"></a>
+       <a href="https://twitter.com/?lang=ko"><img  src="./resources/images/3.gif"></a>
+       <a href="https://ko-kr.facebook.com/"><img  src="./resources/images/4.gif"></a>
+       <a href="https://www.kakaocorp.com/service/KakaoTalk?lang=ko"><img  src="./resources/images/5.gif"></a>
+       <a href="https://www.pinterest.co.kr/"><img  src="./resources/images/6.gif"></a>
  </div>
  </div>
   <hr>

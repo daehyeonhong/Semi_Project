@@ -28,6 +28,8 @@ select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nati
 select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address,st.status from ttsale s,ttdelivery d,ttstatus st where s.sessionId=d.sessionId and s.status=st.statusNumber
 select d.sessionId,s.saleDate,s.productId,s.saleQty,d.name,d.deliveryDate,d.nation,d.zipCode,d.address, s.status from ttsale s,ttdelivery d where s.sessionId=d.sessionId and s.status not in (5) order by s.seq
 
+select*from ttmember
+select*from ttproduct
 select*from ttSALE
 select*from ttdelivery
 select*from ttstatus
@@ -63,3 +65,7 @@ SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.NATION,D
 SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.NATION,D.ZIPCODE,D.ADDRESS,S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.DELIVERYSEQ=D.SEQ GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID;
 
 SELECT*FROM TTPRODUCT WHERE p_id LIKE upper('%P%')ORDER BY P_ID DESC
+select p_unitsinstock from ttproduct where p_id='P1237'
+alter table ttproduct change p_unitsinstock p_unitsinstock int
+
+UPDATE TTSALE SET STATUS=3 WHERE PRODUCTID='P1235' AND SEQ='2;'

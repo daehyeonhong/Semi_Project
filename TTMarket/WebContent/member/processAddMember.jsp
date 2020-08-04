@@ -55,7 +55,7 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	<%=extraAddress%><br>
 	<%=grade%><br>
 	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/WebMarketDB" user="root"
+		url="jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false" user="root"
 		password="1234" />
 
 	<%--db 저장 --%>
@@ -78,9 +78,8 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	</c:catch>
 	<c:if test="${empty except}">
 		<c:if test="${resultSet>0}">
-			<%="오류오류오류"%>
+		<c:redirect url="./resultMember.jsp?msg=1" />
 		</c:if>
 	</c:if>
-	<%="오류오류오류"%>
 </body>
 </html>

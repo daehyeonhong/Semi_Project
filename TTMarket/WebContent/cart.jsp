@@ -72,7 +72,7 @@ if (cartList == null || (cartList.size() == 0)) {
 </script>
 </head>
 <body>
-	<jsp:include page="menu.jsp" />
+	<%@include file="menu.jsp"%>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">장바구니</h1>

@@ -5,8 +5,46 @@
 <head>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+body {
+	position: absolute;
+	margi: 0;
+	padding: 0;
+}
+
+#context1 {
+	position: relative;
+	align-items: center;
+	top: 50px;
+	left: 500px;
+	width: 700px;
+	height: 900px;
+	background-color: #EFEEEE;
+}
+
+#subject {
+	text-align: center;
+	color: #9A9493;
+}
+
+#btn {
+	width: 330px;
+}
+
+#btn_cancel {
+	background-color: #848484;
+	width: 330px;
+}
+
+#home_icon {
+	width: 70px;
+	height: 60px;
+	margin: 10px;
+}
+</style>
+
 <script>
 $(document).ready(function(){
 	$('#dupCheck').click(function(){
@@ -38,14 +76,14 @@ $(document).ready(function(){
 				$('#idChecked').val('true');}}
 				});/* ajax */
 			});/* id */
-			
+let email =document.getElementById('mail1').value;
+let com = document.getElementById('mail2').value;
 $('#btn_mail').click(function () {
-	let email = $('#mail1').val();
-	let com =  $('#mail2').val();
+	/* alert(email+com);  */
 	window.open("mailConfirm.jsp?mail1="+email+"&mail2="+com, 'mail인증', "_blank",
 			"toolbar=yes", "scrollbars=yes",
 	"resizable=yes,top=500,left=500,width=50,height=50");
-	});
+});
 });
 
   function checkForm(){
@@ -64,7 +102,9 @@ $('#btn_mail').click(function () {
 		}
 }   
 
-  $(document).ready(function(){
+</script>
+<script>
+	$(document).ready(function(){
 			 $('#home_icon').mouseover(function(){
 						$(this).css("cursor","pointer");
 			 });  
@@ -73,60 +113,17 @@ $('#btn_mail').click(function () {
 			}); 
 		});
 
-  function execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("extraAddress").value = '';
-                }
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postcode').value = data.zonecode;
-                document.getElementById("address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("detailAddress").focus();
-            }
-        }).open();
- }
 </script>
 <title>회원가입</title>
 </head>
 <body>
-	<jsp:include page="/menu.jsp"/>
+	<%-- <jsp:include page="/menu.jsp"/> --%>
+	<div>
+		<img src="../resources/images/home_icon.png" id="home_icon"/>
+	</div>
 	<div class="container">
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="display-3">회원 가입</h1>
-			</div>
-		</div>
+		<div class="context" id="context1">
+			<h1 class="display-3" id="subject">회원 가입</h1>
 
 			<div class="container">
 				<form name="newMember" class="form-horizontal" id="newMember"
@@ -274,8 +271,63 @@ $('#btn_mail').click(function () {
 					</div>
 				</form>
 			</div>
-			<div></div>
-	</div>
 		 <jsp:include page="/footer.jsp"/>
+			<div></div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("extraAddress").value = '';
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailAddress").focus();
+            }
+        }).open();
+ }
+</script>

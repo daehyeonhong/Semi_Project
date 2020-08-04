@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8" />
 <title>결제</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
@@ -140,9 +140,9 @@
 				<ul class="list-group list-group-horizontal">
 					<li class="list-group col-sm-2"><input id="cardId1" class="form-control" name="cardId1" maxlength="4" placeholder="0000" required="required" /></li>
 					<li class="list-group"><span>-</span></li>
-					<li class="list-group col-sm-2"><input id="cardId2" class="form-control" name="cardId2" maxlength="4" placeholder="0000" type="password" required="required" />
+					<li class="list-group col-sm-2"><input id="cardId2" class="form-control" name="cardId2" maxlength="4" placeholder="0000" type="password" required="required" /></li>
 					<li class="list-group"><span>-</span></li>
-					<li class="list-group col-sm-2"><input id="cardId3" class="form-control" name="cardId3" maxlength="4" placeholder="0000" type="password" required="required" />
+					<li class="list-group col-sm-2"><input id="cardId3" class="form-control" name="cardId3" maxlength="4" placeholder="0000" type="password" required="required" /></li>
 					<li class="list-group"><span>-</span></li>
 					<li class="list-group col-sm-2"><input id="cardId4" class="form-control" name="cardId4" maxlength="4" placeholder="0000" required="required" /></li>
 				</ul>

@@ -19,6 +19,7 @@
 <title>회원수정</title>
 </head>
 <body>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	function changePass(id) {
 		window
@@ -27,15 +28,6 @@
 						"_blank",
 						"toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=200,width=500,height=400");
 	}
-	function deleteMember() {
-		let yesNo = confirm("정말 탈퇴하시겠습니까?");//yes==true,no==false
-		if (yesNo) {
-			location.href = "deleteMember.jsp";
-		} else {
-			return;
-		}
-	}
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
 	function execDaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -91,7 +83,6 @@
 			<h1 class="display-3">회원 수정</h1>
 		</div>
 	</div>
-	<%--  while(rs.next())  --%>
 	<c:forEach var="row" items="${resultSet.rows}">
 		<c:set var="mail" value="${row.mail}" />
 		<c:set var="mail1" value="${mail.split('@')[0]}" />
@@ -107,19 +98,6 @@
 					<div class="col-sm-3">
 						<input class="form-control" placeholder="id" value="<c:out value='${row.id}'/>" disabled="disabled" />
 						<input type="hidden" name="id" id="id" class="form-control" placeholder="id" value="<c:out value='${row.id}'/>" />
-					</div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2">비밀번호</label>
-					<div class="col-sm-3">
-						<input type="password" name="password" class="form-control" placeholder="password" />
-					</div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2">비밀번호확인</label>
-					<div class="col-sm-3">
-						<input type="password" name="password_confirm" class="form-control" placeholder="password_confirm" />
-						<input type="button" class="btn btn-primary" value="비밀번호" id="changePassword" name="changePassword" onclick="changePass('${row.id}')" />
 					</div>
 				</div>
 				<div class="form-group row">
@@ -209,9 +187,8 @@
 
 				<div class="form-group row">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" value="회원수정" class="btn btn-primary" />
-						<input type="reset" value="취소" class="btn btn-primary" />
-						<a href="javascript:deleteMember();" class="btn btn-primary">회원탈퇴</a>
+						<input type="submit" value="회원수정" class="btn btn-success" />
+						<input type="reset" value="취소" class="btn btn-warning" />
 					</div>
 				</div>
 			</form>

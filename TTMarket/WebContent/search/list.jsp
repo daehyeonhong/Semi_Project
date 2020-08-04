@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="../numberFormat.jsp"%>
 <%
 	List<ProductDTO> productList = (List<ProductDTO>) request.getAttribute("productList");
 	String items = (String) request.getAttribute("items"),
@@ -37,12 +38,13 @@
 <jsp:include page="../menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">상품 목록 표시</h1>
+			<h1 class="display-3">검색 결과</h1>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row" align="center">
 			<%
+			if (productList.size() > 0) {
 			for (int i = 0; i < productList.size(); i++) {
 				ProductDTO notice = productList.get(i);
 			%>
@@ -51,7 +53,7 @@
 					style="width: 100%">
 				<h3><%=notice.getName()%></h3>
 				<p><%=notice.getDescription()%></p>
-				<p><%=notice.getUnitPrice()%></p>
+				<p><%=priceFormat.format(notice.getUnitPrice())%></p>
 				<p>
 					<a href="product.jsp?id=<%=notice.getProductId()%>"
 						class="btn btn-secondary" role="button">상세정보 &raquo;</a>
@@ -59,6 +61,11 @@
 			</div>
 			<%
 				}
+			} else {
+				%>
+				<h3 class="alert alert-danger">검색 결과가 없습니다.</h3>
+				<%
+			}
 			%>
 		</div>
 	</div>

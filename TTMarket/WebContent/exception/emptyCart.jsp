@@ -22,5 +22,6 @@
 			<a href="${pageContext.request.contextPath}/products.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
 		</p>
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

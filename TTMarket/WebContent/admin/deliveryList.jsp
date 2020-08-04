@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-		String searchSql = "SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.DELIVERYDATE,D.NATION,D.ZIPCODE,D.ADDRESS,S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.DELIVERYSEQ=D.SEQ AND S.STATUS NOT IN(5) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID";
+		String searchSql = "SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.DELIVERYDATE,D.NATION,D.ZIPCODE,D.ADDRESS,S.STATUS,S.SESSIONID FROM TTSALE S, TTDELIVERY D WHERE S.DELIVERYSEQ=D.SEQ AND S.STATUS NOT IN(5) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID";
 	PreparedStatement searchPreparedStatement = con.prepareStatement(searchSql);
 	ResultSet searchResultSet = searchPreparedStatement.executeQuery();
 	String statusSql = "SELECT STATUSNUMBER FROM TTSTATUS";
@@ -34,6 +34,7 @@
 					<th><small>주문일</small></th>
 					<th><small>제품 코드</small></th>
 					<th><small>수량</small></th>
+					<th><small>고객ID</small></th>
 					<th><small>고객명</small></th>
 					<th><small>구매일</small></th>
 					<th><small>배송 국가</small></th>
@@ -45,13 +46,20 @@
 			<%
 				while (searchResultSet.next()) {
 				statusResultSet = statusPreparedStatement.executeQuery();
+				int deliveryseq = searchResultSet.getInt("S.DELIVERYSEQ"),
+						saleqty = searchResultSet.getInt("S.SALEQTY");
+				String saleDate = searchResultSet.getString("S.SALEDATE"),
+						productId = searchResultSet.getString("S.PRODUCTID"),
+						name = searchResultSet.getString("D.NAME"),
+						sessionId = searchResultSet.getString("S.SESSIONID");
 			%>
 			<tr>
-				<td><%=searchResultSet.getInt(1)%></td>
-				<td><%=searchResultSet.getString(2)%></td>
-				<td style="min-width: 100px"><%=searchResultSet.getString(3)%></td>
-				<td style="min-width: 70px"><%=searchResultSet.getString(4)%></td>
-				<td style="min-width: 50px"><%=searchResultSet.getString(5)%></td>
+				<td><%=deliveryseq%></td>
+				<td><%=saleDate%></td>
+				<td style="min-width: 100px"><%=productId%></td>
+				<td style="min-width: 70px"><%=saleqty%></td>
+				<td style="min-width: 50px"><%=sessionId%></td>
+				<td style="min-width: 50px"><%=name%></td>
 				<td><%=searchResultSet.getString(6)%></td>
 				<td><%=searchResultSet.getString(7)%></td>
 				<td><%=searchResultSet.getString(8)%></td>

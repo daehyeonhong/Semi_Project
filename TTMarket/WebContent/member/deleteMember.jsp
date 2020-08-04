@@ -1,20 +1,22 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%
-	String sessionId = (String) session.getAttribute("sessionId");
-%>
-<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost:3306/WebMarketDB" user="root"
-	password="1234" />
-<c:catch var="ex">
-	<sql:update dataSource="${dataSource}" var="resultSet">
-    delete from ttmember where id=?
-    <sql:param value="<%=sessionId%>" />
-	</sql:update>
-</c:catch>
-${ex}
-<c:if test="${resultSet>0}">
-	<c:import url="logoutMember.jsp" var="url" />
-	<c:redirect url="resultMember.jsp" />
-</c:if>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function deleteMember() {
+			let yesNo = confirm("정말 탈퇴하시겠습니까?");
+			if (yesNo) {
+				location.href = "deleteMember.jsp";
+			} else {
+				return;
+			}
+		}
+	</script>
+	<a href="javascript:deleteMember();" class="btn btn-danger">회원탈퇴</a>
+</body>
+</html>
