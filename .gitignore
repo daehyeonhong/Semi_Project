@@ -27,4 +27,4 @@ hs_err_pid*
 *.Servers/
 Servers/
 
-MailSendAction.java
+Gmail.java
