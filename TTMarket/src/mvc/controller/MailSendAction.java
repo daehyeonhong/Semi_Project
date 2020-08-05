@@ -3,6 +3,8 @@ package mvc.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
+import java.util.Random;
+
 import javax.mail.Address;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -59,12 +61,38 @@ public class MailSendAction extends HttpServlet {
 	}
 
 	private void mailSender(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		StringBuffer temp = new StringBuffer();
+		Random random = new Random();
+
+		for (int i = 0; i < 20; i++) {
+		    int randomIndex = random.nextInt(3);
+		    switch (randomIndex ) {
+		    case 0:
+		        // a-z
+		        temp.append((char) ((int) (random.nextInt(26)) + 97));
+		        break;
+		    case 1:
+		        // A-Z
+		        temp.append((char) ((int) (random.nextInt(26)) + 65));
+		        break;
+		    case 2:
+		        // 0-9
+		        temp.append((random.nextInt(10)));
+		        break;
+		    }
+		}
+		
+		String authenticode = temp.toString();
+		request.getSession().setAttribute("presentCode", authenticode);
+		System.out.println(authenticode);
 		String host = "http://localhost:8181/TTMarket/", 
 				from = "notifyttmarket@gmail.com", 
-				to = "valeur93@naver.com",
+				to = request.getSession().getAttribute("email").toString(),
 				subject = "TTMarket 회원가입 이메일 인증", 
-				content = "안녕하십니까 가입을 위해서 입력창에를 입력해주세요. <a href='" + host
-						+ "welcome.jsp?code=" + new SHA256().getSHA256(to) + "'>되돌아 가기</a>";
+				content = "안녕하십니까 인증을 위해서 입력창에 [" + authenticode + "]을(를) 입력해주세요. <a href='" + host
+						+ "welcome.jsp'>TTMarket</a>";
+		System.out.println(to);
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.user", from);

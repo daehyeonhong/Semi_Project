@@ -1,8 +1,3 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<style>
-html,body {overflow:hidden;}
-</style>
-<script>
-alert('전송 성공!');
-window.close();
-</script>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%=(String) session.getAttribute("presentCode")%>

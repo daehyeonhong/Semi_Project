@@ -126,6 +126,10 @@
 				$("#updId").attr("type", "hidden");
 				$("#submitBtn").attr("disabled", "disabled");
 				$("#dupCheck").attr("type", "button");
+				$("#mail1").removeAttr("readonly");
+				$("#mail2").removeAttr("readonly");
+				$("#updMailBtn").attr("type", "hidden");
+				$("#mailBtn").attr("type", "button");
 				$("#idChecked").val('false');
 				$("#mailChecked").val('false');
 				$('#result').html('');
@@ -143,6 +147,14 @@
 				} else {
 					alert('인증하려는 메일 주소를 입력하세요');
 				}
+			});
+			
+			$('#updMailBtn').click(function () {
+				$('#mail1').removeAttr("readonly");
+				$('#mail2').removeAttr("readonly");
+				$('#mailBtn').attr("type", "button");
+				$('#updMailBtn').attr("type", "hidden");
+				$('#mailChecked').val('false');
 			});
 		});
 		
@@ -326,7 +338,7 @@
 							</select>
 							 <div class="input-group-append">
 							<input class="btn btn-info" type="button" id="mailBtn" value="이메일 인증">
-							<input class="btn btn-warning" style="color: #FFF;" type="button" id="updMailBtn" value="이메일 변경">
+							<input class="btn btn-warning" style="color: #FFF;" type="hidden" id="updMailBtn" value="이메일 변경">
 					  </div>
 							<input type="hidden" id="mailChecked" value="false" /> 
 				      </div>
