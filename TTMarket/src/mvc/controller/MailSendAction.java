@@ -46,10 +46,11 @@ public class MailSendAction extends HttpServlet {
 		switch (command) {
 		case "/mail/EmailCheck.mail":
 			mailSender(request, response);
-			requestDispatcher = request.getRequestDispatcher("Send.mail");
+			requestDispatcher = request.getRequestDispatcher("HaHa.mail");
 			break;
-		case "/mail/Send.mail":
-			requestDispatcher = request.getRequestDispatcher("./successSendEMail.jsp");
+		case "/mail/Send.mail": requestDispatcher = request.getRequestDispatcher("./successSendEMail.jsp");
+			break;
+		case "/mail/HaHa.mail": requestDispatcher = request.getRequestDispatcher("./success.jsp");
 			break;
 		default:
 			break;
@@ -58,13 +59,12 @@ public class MailSendAction extends HttpServlet {
 	}
 
 	private void mailSender(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		String host = "http://localhost:8181/TTMarket/",
-			   from = "notifyttmarket@gmail.com",
-			   to = "fholng@outlook.com",
-			   subject = "TTMarket 회원가입 이메일 인증",
-			   content = "안녕하십니까 가입을 위해서 입력창에 <>를 입력해주세요. <a href='" + host + "welcome.jsp?code="
-					   + new SHA256().getSHA256(to) + "'>되돌아 가기</a>";
+		String host = "http://localhost:8181/TTMarket/", 
+				from = "notifyttmarket@gmail.com", 
+				to = "valeur93@naver.com",
+				subject = "TTMarket 회원가입 이메일 인증", 
+				content = "안녕하십니까 가입을 위해서 입력창에를 입력해주세요. <a href='" + host
+						+ "welcome.jsp?code=" + new SHA256().getSHA256(to) + "'>되돌아 가기</a>";
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.user", from);
@@ -72,7 +72,6 @@ public class MailSendAction extends HttpServlet {
 		properties.put("mail.smtp.port", "465");
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.trust", "true");
 		properties.put("mail.smtp.debug", "true");
 		properties.put("mail.smtp.socketFactory.post", "465");
 		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
@@ -80,9 +79,9 @@ public class MailSendAction extends HttpServlet {
 
 		try {
 			Authenticator auth = new Gmail();
-			Session session = Session.getInstance(properties, auth);
-			session.setDebug(true);
-			MimeMessage message = new MimeMessage(session);
+			Session ses= Session.getInstance(properties, auth);
+			ses.setDebug(true);
+			MimeMessage message = new MimeMessage(ses);
 			message.setSubject(subject);
 			Address fromAddress = new InternetAddress(from);
 			message.setFrom(fromAddress);
@@ -90,8 +89,7 @@ public class MailSendAction extends HttpServlet {
 			message.addRecipient(Message.RecipientType.TO, toAddress);
 			message.setContent(content, "text/html;charset=UTF8");
 			Transport.send(message);
-			System.out.println();
-			System.out.println();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintWriter script = response.getWriter();
@@ -99,7 +97,7 @@ public class MailSendAction extends HttpServlet {
 			script.close();
 			return;
 		}
-		
+
 	}
 
 }

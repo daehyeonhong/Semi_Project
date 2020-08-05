@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ include file="randomNum.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="./EmailCheck.mail" method="post">
-		<input type="submit" value="메일 전송" />
-	</form>
+<script>
+
 </body>
 </html>

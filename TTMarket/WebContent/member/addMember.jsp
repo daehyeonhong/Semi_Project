@@ -9,6 +9,195 @@
 <title>회원가입</title>
 </head>
 <body>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$().ready(function(){
+				    
+			$('#submitBtn').click(function() {
+				
+				if ($('#passwordConfirm').val() == 'true') {
+					let confirmSignIn = confirm("정말 가입하시겠습니까?");
+					
+						if (confirmSignIn){
+							$('#newMember').submit();
+						} else {
+							alert('요청이 취소되었습니다.');
+						}
+				} else {
+					alert('비밀번호 오류!');
+					$("#password").val('');
+					$("#password").focus();
+					$("#password_confirm").val('');
+				}
+			});
+			
+			
+			$("#password_confirm").change(function() {
+				let password1 = $("#password").val();
+				let password2 = $("#password_confirm").val();
+				
+				if ((password1 != '') && (password2 != '')) {
+					
+					if ((password1 == password2)){
+						$("#passwordConfirm").val('true');
+						$("p").toggle(1000, function(){
+						      alert("The toggle() method is finished!");
+						    });
+						$("#checkPasswordResult").attr("class", "form-control badge badge-success");
+						$("#checkPasswordResult").html('비밀번호 확인');
+					} else {
+						$("#passwordConfirm").val('false');
+						$("#checkPasswordResult").attr('class', 'form-control badge badge-danger');
+						$("#checkPasswordResult").html('비밀번호가 다릅니다.');
+					}
+				} else {
+					$("#checkPasswordResult").attr('class', '');
+					$("#checkPasswordResult").html('');
+				}
+			});
+			
+			$("#password").change(function() {
+				let password1 = $("#password").val();
+				let password2 = $("#password_confirm").val();
+				
+				if ((password2 != '') && (password1 != '')) {
+					
+					if (password1 == password2) {
+						$("#passwordConfirm").val('true');
+						$("#checkPasswordResult").attr("class", "form-control badge badge-success");
+						$("#checkPasswordResult").html('비밀번호 확인');
+					} else {
+						$("#passwordConfirm").val('false');
+						$("#checkPasswordResult").attr('class', 'form-control badge badge-danger');
+						$("#checkPasswordResult").html('비밀번호가 다릅니다.');
+					}
+				} else {
+					$("#checkPasswordResult").attr('class', '');
+					$("#checkPasswordResult").html('');
+				}
+			});
+			
+			$("#updId").click(function() {
+				$("#submitBtn").attr("disabled", "disabled");
+				$("#id").removeAttr("readonly");
+				$("#id").val('');
+				$("#id").focus();
+				$("#dupCheck").attr("type", "button");
+				$("#updId").attr("type", "hidden");
+				$("#result").html('');
+				});
+			
+		$("#dupCheck").click(function() {
+			
+			if ($('#id').val().trim() != '') {
+				$.ajax({
+					type : 'GET',/* 요청 메소드 */
+					url : 'idCheck.jsp?id='+ $('#id').val(),dataType : 'text',/* 요청한 결과 값의 타입 */
+					success : function(data) { /* 콜백 함수 */
+						
+						if ($.trim(data) == "fail") {/* 이미 존재하면 fail */
+								$("#result").attr("class","badge badge-warning");
+								$('#result').html('이미 사용중인 ID입니다.');
+								$("#id").val('');
+								$("#id").focus();
+							} else {/* 사용 가능하면 success */
+								$("#result").attr("class","badge badge-success");
+								$('#result').html('사용 가능한 ID입니다.');
+								$("#id").attr("readonly",true);
+								$("#dupCheck").attr("type","hidden");
+								$("#updId").attr("type","button");
+								$("#idChecked").val('true');
+								$("#submitBtn").removeAttr("disabled");
+								$("#password").focus();
+								}
+					}
+				});
+					} else {
+						alert('아이디를 입력하세요!');
+						$("#id").focus();
+					}
+			});
+			
+			$("#resetBtn").click(function() {
+				$("#checkPasswordResult").attr('class', '');
+				$("#checkPasswordResult").html('');
+				$("#id").removeAttr("readonly");
+				$("#updId").attr("type", "hidden");
+				$("#submitBtn").attr("disabled", "disabled");
+				$("#dupCheck").attr("type", "button");
+				$("#idChecked").val('false');
+				$('#result').html('');
+				$("#id").focus();
+				$('#newMember')[0].reset();
+			});
+		});
+		
+		function checkForm() {
+			let checked = $('#idChecked').val();
+			
+			if(checked=='false'){
+				alert('아이디 체크를 해주세요.');
+				$('#id').focus();
+				return false;
+			} else if(checked=='true'){
+				return true;
+			}
+		}
+
+		function execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var addr = ''; // 주소 변수
+							var extraAddr = ''; // 참고항목 변수
+
+							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+								addr = data.roadAddress;
+							} else { // 사용자가 지번 주소를 선택했을 경우(J)
+								addr = data.jibunAddress;
+							}
+
+							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+							if (data.userSelectedType === 'R') {
+								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+								if (data.bname !== ''
+										&& /[동|로|가]$/g.test(data.bname)) {
+									extraAddr += data.bname;
+								}
+								// 건물명이 있고, 공동주택일 경우 추가한다.
+								if (data.buildingName !== ''
+										&& data.apartment === 'Y') {
+									extraAddr += (extraAddr !== '' ? ', '
+											+ data.buildingName
+											: data.buildingName);
+								}
+								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+								if (extraAddr !== '') {
+									extraAddr = ' (' + extraAddr + ')';
+								}
+								// 조합된 참고항목을 해당 필드에 넣는다.
+								document.getElementById("extraAddress").value = extraAddr;
+
+							} else {
+								document.getElementById("extraAddress").value = '';
+							}
+
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('postcode').value = data.zonecode;
+							document.getElementById("address").value = addr;
+							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("detailAddress").focus();
+						}
+			}).open();
+		}
+	</script>
 	<jsp:include page="/menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
@@ -155,199 +344,10 @@
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-4">
 					<input type="button" id="submitBtn" name="submitBtn" value="등록"	disabled="disabled" class="btn btn-primary" />
-					<input type="reset" id="reset" value="취소" class="btn btn-warning" />
+					<input type="button" id="resetBtn" value="초기화" class="btn btn-warning" />
 				</div>
 			</div>
 		</form>
 	</div>
-	<jsp:include page="/footer.jsp" />
-	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script>
-		$().ready(function(){
-				    
-			$('#submitBtn').click(function() {
-				
-				if ($('#passwordConfirm').val() == 'true') {
-					let confirmSignIn = confirm("정말 가입하시겠습니까?");
-					
-						if (confirmSignIn){
-							$('#newMember').submit();
-						} else {
-							alert('요청이 취소되었습니다.');
-						}
-				} else {
-					alert('비밀번호 오류!');
-					$("#password").val('');
-					$("#password").focus();
-					$("#password_confirm").val('');
-				}
-			});
-			
-			
-			$("#password_confirm").change(function() {
-				let password1 = $("#password").val();
-				let password2 = $("#password_confirm").val();
-				
-				if ((password1 != '') && (password2 != '')) {
-					
-					if ((password1 == password2)){
-						$("#passwordConfirm").val('true');
-						$("p").toggle(1000, function(){
-						      alert("The toggle() method is finished!");
-						    });
-						$("#checkPasswordResult").attr("class", "form-control badge badge-success");
-						$("#checkPasswordResult").html('비밀번호 확인');
-					} else {
-						$("#passwordConfirm").val('false');
-						$("#checkPasswordResult").attr('class', 'form-control badge badge-danger');
-						$("#checkPasswordResult").html('비밀번호가 다릅니다.');
-					}
-				} else {
-					$("#checkPasswordResult").attr('class', '');
-					$("#checkPasswordResult").html('');
-				}
-			});
-			
-			$("#password").change(function() {
-				let password1 = $("#password").val();
-				let password2 = $("#password_confirm").val();
-				
-				if ((password2 != '') && (password1 != '')) {
-					
-					if (password1 == password2) {
-						$("#passwordConfirm").val('true');
-						$("#checkPasswordResult").attr("class", "form-control badge badge-success");
-						$("#checkPasswordResult").html('비밀번호 확인');
-					} else {
-						$("#passwordConfirm").val('false');
-						$("#checkPasswordResult").attr('class', 'form-control badge badge-danger');
-						$("#checkPasswordResult").html('비밀번호가 다릅니다.');
-					}
-				} else {
-					$("#checkPasswordResult").attr('class', '');
-					$("#checkPasswordResult").html('');
-				}
-			});
-			
-			$("#updId").click(function() {
-				$("#submitBtn").attr("disabled", "disabled");
-				$("#id").removeAttr("readonly");
-				$("#id").val('');
-				$("#id").focus();
-				$("#dupCheck").attr("type", "button");
-				$("#updId").attr("type", "hidden");
-				$("#result").html('');
-				});
-			
-		$("#dupCheck").click(function() {
-			
-			if ($('#id').val().trim() != '') {
-				$.ajax({
-					type : 'GET',/* 요청 메소드 */
-					url : 'idCheck.jsp?id='+ $('#id').val(),dataType : 'text',/* 요청한 결과 값의 타입 */
-					success : function(data) { /* 콜백 함수 */
-						
-						if ($.trim(data) == "fail") {/* 이미 존재하면 fail */
-								$("#result").attr("class","badge badge-warning");
-								$('#result').html('이미 사용중인 ID입니다.');
-								$("#id").val('');
-								$("#id").focus();
-							} else {/* 사용 가능하면 success */
-								$("#result").attr("class","badge badge-success");
-								$('#result').html('사용 가능한 ID입니다.');
-								$("#id").attr("readonly",true);
-								$("#dupCheck").attr("type","hidden");
-								$("#updId").attr("type","button");
-								$("#idChecked").val('true');
-								$("#submitBtn").removeAttr("disabled");
-								$("#password").focus();
-								}
-					}
-				});
-					} else {
-						alert('아이디를 입력하세요!');
-						$("#id").focus();
-					}
-			});
-			
-			$("#reset").click(function() {
-				$("#checkPasswordResult").attr('class', '');
-				$("#checkPasswordResult").html('');
-				$("#id").removeAttr("readonly");
-				$("#updId").attr("type", "hidden");
-				$("#submitBtn").attr("disabled", "disabled");
-				$("#dupCheck").attr("type", "button");
-				$("#idChecked").val('false');
-				$('#result').html('');
-				$("#id").focus();
-			});
-		});
-		
-		function checkForm() {
-			let checked = $('#idChecked').val();
-			
-			if(checked=='false'){
-				alert('아이디 체크를 해주세요.');
-				$('#id').focus();
-				return false;
-			} else if(checked=='true'){
-				return true;
-			}
-		}
-
-		function execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-							var addr = ''; // 주소 변수
-							var extraAddr = ''; // 참고항목 변수
-
-							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-								addr = data.roadAddress;
-							} else { // 사용자가 지번 주소를 선택했을 경우(J)
-								addr = data.jibunAddress;
-							}
-
-							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-							if (data.userSelectedType === 'R') {
-								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-								if (data.bname !== ''
-										&& /[동|로|가]$/g.test(data.bname)) {
-									extraAddr += data.bname;
-								}
-								// 건물명이 있고, 공동주택일 경우 추가한다.
-								if (data.buildingName !== ''
-										&& data.apartment === 'Y') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
-											: data.buildingName);
-								}
-								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-								if (extraAddr !== '') {
-									extraAddr = ' (' + extraAddr + ')';
-								}
-								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("extraAddress").value = extraAddr;
-
-							} else {
-								document.getElementById("extraAddress").value = '';
-							}
-
-							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('postcode').value = data.zonecode;
-							document.getElementById("address").value = addr;
-							// 커서를 상세주소 필드로 이동한다.
-							document.getElementById("detailAddress").focus();
-						}
-			}).open();
-		}
-	</script>
-</body>
+	<jsp:include page="/footer.jsp" /></body>
 </html>
