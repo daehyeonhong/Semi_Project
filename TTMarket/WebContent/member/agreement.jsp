@@ -70,9 +70,17 @@ $(document).ready(function(){
 	});
 	 $("#all1").click(function(){
 		if($("#all1").attr('src')=="../resources/images/check.jpg"){
-			$("img").attr("src","../resources/images/checked.jpg");
+			$("#all1").attr("src","../resources/images/checked.jpg");
+			$("#1").attr("src","../resources/images/checked.jpg");
+			$("#2").attr("src","../resources/images/checked.jpg");
+			$("#3").attr("src","../resources/images/checked.jpg");
+			$("#4").attr("src","../resources/images/checked.jpg");
 		}else{
-			$("img").attr("src","../resources/images/check.jpg");
+			$("#all1").attr("src","../resources/images/check.jpg");
+			$("#1").attr("src","../resources/images/check.jpg");
+			$("#2").attr("src","../resources/images/check.jpg");
+			$("#3").attr("src","../resources/images/check.jpg");
+			$("#4").attr("src","../resources/images/check.jpg");
 		}
 		}); 
 	$("#1, #2, #3, #4").click(function(){

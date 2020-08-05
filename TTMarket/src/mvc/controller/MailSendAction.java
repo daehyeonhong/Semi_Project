@@ -89,6 +89,8 @@ public class MailSendAction extends HttpServlet {
 			message.addRecipient(Message.RecipientType.TO, toAddress);
 			message.setContent(content, "text/html;charset=UTF8");
 			Transport.send(message);
+			PrintWriter script = response.getWriter();
+			script.println("<script>alert('인증 메일이 발송되었습니다.');</script>");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

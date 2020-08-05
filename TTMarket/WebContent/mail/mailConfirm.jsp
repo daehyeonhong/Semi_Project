@@ -8,6 +8,9 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+html,body {overflow:hidden;}
+</style>
 </head>
 <script>
 $(document).ready(function(){
@@ -17,8 +20,8 @@ $(document).ready(function(){
 		"toolbar=yes", "scrollbars=yes",
 		"resizable=yes,top=500,left=500,width=50,height=50"); 
 		$('#confirm_num2').focus();
-	  
 		});
+	
 	$('#btn2').change(function () {
 		let confirm_num2 = $('#confirm_num2').val().trim();
 		if (isNaN(confirm_num2)) {
@@ -27,6 +30,7 @@ $(document).ready(function(){
 		}
 	});
 });
+
 	function checkBtn(corNum) {
 		alert(corNum);
 		let ranNum = document.getElementById("random").value;

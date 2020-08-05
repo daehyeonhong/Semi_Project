@@ -127,9 +127,22 @@
 				$("#submitBtn").attr("disabled", "disabled");
 				$("#dupCheck").attr("type", "button");
 				$("#idChecked").val('false');
+				$("#mailChecked").val('false');
 				$('#result').html('');
 				$("#id").focus();
 				$('#newMember')[0].reset();
+			});
+			
+			$('#mailBtn').click(function () {
+				let email = $('#mail1').val().trim();
+				let com =  $('#mail2').val().trim();
+				if (email != '') {
+				window.open("../mail/mailConfirm.jsp?mail1="+email+"&mail2="+com, 'mail인증', "_blank",
+						"toolbar=yes", "scrollbars=yes",
+				"resizable=yes,top=500,left=500,width=50,height=50");
+				} else {
+					alert('인증하려는 메일 주소를 입력하세요');
+				}
 			});
 		});
 		
@@ -216,7 +229,7 @@
 							<table width="100%">
 								<tr>
 									<td align="left">
-										<input type="button" value="중복확인" class="btn btn-secondary col-sm-4" id="dupCheck" />
+										<input type="button" value="중복확인" class="btn btn-info col-sm-4" id="dupCheck" />
 										<input type="hidden" value="ID변경" id="updId" class="btn btn-warning col-sm-4" />
 										<input type="hidden" id="idChecked" value="">
 										<label id="result" class="badge badge-success"></label>
@@ -243,7 +256,7 @@
 				<div class="col-sm-3">
 				<label id="checkPasswordResult"></label>
 				</div>
-				<input type="text" id="passwordConfirm" value="false" />
+				<input type="text" id="passwordConfirm" value="false" readonly="readonly" />
 			</div>
 
 			<div class="form-group row">
@@ -297,7 +310,28 @@
 							placeholder="일" size="4" />
 					</div>
 				</div>
-				
+					
+				<div class="form-group row">
+					<div class="input-group mb-3">
+						<label class="col-sm-2">이메일</label>
+			      <input name="mail1" id="mail1" maxlength="50" class="form-control col-sm-3" placeholder="Your Email" required="required"/>
+			      <div class="input-group-prepend">
+			        <span class="input-group-text">@</span>
+			      </div>
+			      <div class="input-group-append">
+			        <select name="mail2" id="mail2" required>
+								<option value="naver.com">naver.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="gmail.com">gmail.com</option>
+							</select>
+							 <div class="input-group-append">
+							<input class="btn btn-info" type="button" id="mailBtn" value="이메일 인증">
+							<input class="btn btn-warning" style="color: #FFF;" type="button" id="updMailBtn" value="이메일 변경">
+					  </div>
+							<input type="hidden" id="mailChecked" value="false" /> 
+				      </div>
+				    </div>
+					</div>
 			
 				<div class="form-group row">
 					<label class="col-sm-2">전화번호</label>
@@ -313,7 +347,7 @@
 					<input class="form-control col-sm-2" type="text" id="postcode"
 						placeholder="우편번호" name="postcode" />
 					<div class="input-group-append">
-						<button class="btn btn-secondary" onclick="execDaumPostcode()"
+						<button class="btn btn-info" onclick="execDaumPostcode()"
 							type="button">우편번호 찾기</button>
 					</div>
 				</div>
@@ -344,7 +378,8 @@
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-4">
 					<input type="button" id="submitBtn" name="submitBtn" value="등록"	disabled="disabled" class="btn btn-primary" />
-					<input type="button" id="resetBtn" value="초기화" class="btn btn-warning" />
+					<input type="button" style="color: #FFF;" id="resetBtn" value="초기화" class="btn btn-warning" />
+					<input type="button" id="resetBtn" value="취소" class="btn btn-danger" />
 				</div>
 			</div>
 		</form>
