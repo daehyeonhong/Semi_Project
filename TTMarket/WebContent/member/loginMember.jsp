@@ -47,6 +47,14 @@
 	<div class="col-md-4 col-md-offset-2">
 
 <fieldset>
+			<%
+				String error = request.getParameter("error");
+			if (error != null) {
+				out.print("<div class='alert alert-danger'>");
+				out.print("아이디와 비밀번호를 확인해 주세요");
+				out.print("</div>");
+			}
+			%>
 <legend align="left" style="border:1px silver">Log In</legend>
 			<!-- <input type="text"  class="btn btn-outline-light text-dark btn-block" name="id" id="id" placeholder="ID"><br>
 			<input type="password" class="btn btn-outline-light text-dark btn-block" name="password" id="password"  placeholder="Password"><br><br>

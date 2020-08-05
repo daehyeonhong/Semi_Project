@@ -89,18 +89,24 @@
 				}
 			%>
 		</ul>
-	 	<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/SearchListAction.search" method="post">
-		 	<select class="form-control mr-sm-2" name="items">
-		 		<option value="unified" disabled="disabled">통합검색</option>
-		 		<option value="p_name">상품명</option>
-		 		<option value="p_id">상품코드</option>
-		 		<option value="p_category">카테고리</option>
-		 		<option value="p_condition">상태</option>
-		 		<option value="p_manufacturer">제조사</option>
-		 		<option value="p_description">상세설명</option>
-		 	</select>
-	    <input class="form-control mr-sm-2" type="text" name="text" placeholder="Search" />
-	    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-  	</form>
+			<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/SearchListAction.search" method="post">
+	    <div class="input-group mt-3 mb-3">
+	      <div class="input-group-prepend">
+	      	<select class="btn btn-light dropdown-toggle" data-toggle="dropdown" name="items">
+				 		<option value="unified" disabled="disabled">통합검색</option>
+				 		<option value="p_name">상품명</option>
+				 		<option value="p_id">상품코드</option>
+				 		<option value="p_category">카테고리</option>
+				 		<option value="p_condition">상태</option>
+				 		<option value="p_manufacturer">제조사</option>
+				 		<option value="p_description">상세설명</option>
+			 		</select>
+	      </div>
+	      <input class="form-control" type="text" name="text" placeholder="Search" />
+	   		<div class="input-group-append">
+	      <button class="btn btn-success" type="submit">Search</button>  
+	     </div>
+	    </div>
+	  </form>
 	</div>
 </nav>

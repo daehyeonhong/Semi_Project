@@ -24,13 +24,25 @@ if (cartList == null || (cartList.size() == 0)) {
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	/* JavaScript Function Init function[function_name](argument){}*/
-	function deleteCart() {
+	function deleteCart(id, cartSize) {
 		/* alert("카트초기화"); */
 		/* 메세지 출력 메소드 */
-		if (confirm("장바구니를 비우시겠습니까?")) {
-			document.addForm.submit();/* action경로로 이동 처리 */
+		if (cartSize != 0) {
+			if (confirm("장바구니를 비우시겠습니까?")) {
+				location.href = './deleteCart.jsp?cartId=' + id;
+			} else {
+				alert('요청이 취소되었습니다.');
+			}
 		} else {
-			document.addForm.reset();/* 초기화 처리 */
+			alert('카트에 상품이 없습니다.');
+		}
+	}
+	
+	function removeItem(id) {
+		if (confirm("상품을 지우시겠습니까?")) {
+			location.href = './removeCart.jsp?id=' + id;
+		} else {
+			alert('요청이 취소되었습니다.');
 		}
 	}
 
@@ -84,7 +96,7 @@ if (cartList == null || (cartList.size() == 0)) {
 			<table width="100%">
 				<tr>
 					<td align="left">
-						<a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger" onclick="deleteCart()">삭제하기</a>
+						<input type="button" class="btn btn-danger" onclick="deleteCart(<%=cartId%>,<%=cartList.size()%>)" value="삭제하기" />
 					</td>
 					<td align="right">
 						<a class="btn btn-success" style="color: #FFF" onclick="checkCart(<%=cartList.size()%>)">주문하기</a>
@@ -122,7 +134,7 @@ if (cartList == null || (cartList.size() == 0)) {
 					</td>
 					<td><%=totalDf%></td>
 					<td>
-						<a href="./removeCart.jsp?id=<%=id%>" class="badge badge-danger">삭제</a>
+						<input type="button" class="btn btn-danger" value="삭제" onclick="removeItem('<%=product.getProductId()%>')" />
 					</td>
 				</tr>
 				<%

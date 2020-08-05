@@ -120,8 +120,8 @@ var on3 = document.getElementById("3");
 				<hr style="border: solid 0.5pt silver;">
 				<p id="nonselected_option1">
 					<img src="../resources/images/check.jpg" id="1">TT마켓 약관동의<span>(필수)</span>
-				</p>
-				<textarea>
+				</p><fieldset>
+				<textarea readonly="readonly">
 여러분을 환영합니다.
 네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
 
@@ -247,7 +247,7 @@ var on3 = document.getElementById("3");
 					<p id="nonselected_option2">
 						<img src="../resources/images/check.jpg"  id="2">개인 정보 수집 및 이용에 대한 안내<span>(필수)</span>
 					</p>
-					<textarea>
+					<textarea readonly="readonly">
 정보통신망법 규정에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 
 1. 수집하는 개인정보
@@ -310,7 +310,7 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
 					<p id="nonselected_option3">
 						<img src="../resources/images/check.jpg"  id="3">개인정보 수집 및 이용에 대한 안내<span>(필수)</span>
 					</p>
-					<textarea>
+					<textarea readonly="readonly">
 위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 네이버 위치기반 서비스를 이용할 수 있습니다.
 
 
@@ -396,12 +396,9 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
 			</form>
 			<br>
 			<div class="container" style="width: 500px;">
-				<button type="button" class="btn btn-success btn-lg" id="btn_ok"
-					onclick='btm_success()'>동의합니다.</button>
-				<button type="button" class="btn btn btn-lg" id="btn_cancel"
-					onclick='location.href="../welcome.jsp"'>취소합니다.</button>
+				<input type="button" class="btn btn-success btn-lg" id="btn_ok" onclick='btm_success()' value="동의합니다" />
+				<input type="button" class="btn btn btn-lg" id="btn_cancel" onclick='history.back()' value="돌아가기" />
 			</div>
-			<br> <br> <br> <br> <br>
 		</div>
 	</div>
 <jsp:include page="../footer.jsp" />

@@ -10,6 +10,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import util.Gmail;
 import util.SHA256;
 
-@WebServlet("/mail")
+@WebServlet("*.mail")
 public class MailSendAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,12 +29,42 @@ public class MailSendAction extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userID = null;
+		System.out.println("Hello, Mail!");
+		String requestURI = request.getRequestURI(),
+				contextPath = request.getContextPath(),
+				command = requestURI.substring(contextPath.length());
+
+		/* 문자셋 설정 */
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print("<html><bodt>" + request.getRequestURL() + "<br />" + requestURI + "<br />" + contextPath + "<br />"
+				+ command + "<br />" + "</body></html>");
+
+		/* 요청 command에 따른 분기 작업 */
+		RequestDispatcher requestDispatcher = null;
+		switch (command) {
+		case "/mail/EmailCheck.mail":
+			mailSender(request, response);
+			requestDispatcher = request.getRequestDispatcher("Send.mail");
+			break;
+		case "/mail/Send.mail":
+			requestDispatcher = request.getRequestDispatcher("./successSendEMail.jsp");
+			break;
+		default:
+			break;
+		}
+		requestDispatcher.forward(request, response);
+	}
+
+	private void mailSender(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
 		String host = "http://localhost:8181/TTMarket/",
-				from = "notifyttmarket@gmail.com",
-				to = "fholng@outlook.com",
-				subject = "회원가입 인증 메일",
-				content = "메롱 <a href='" + host + "welcome.jsp?code=" + new SHA256().getSHA256(to) + "'>되돌아 가기</a>";
+			   from = "notifyttmarket@gmail.com",
+			   to = "fholng@outlook.com",
+			   subject = "TTMarket 회원가입 이메일 인증",
+			   content = "안녕하십니까 가입을 위해서 입력창에 <>를 입력해주세요. <a href='" + host + "welcome.jsp?code="
+					   + new SHA256().getSHA256(to) + "'>되돌아 가기</a>";
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.user", from);
@@ -41,6 +72,7 @@ public class MailSendAction extends HttpServlet {
 		properties.put("mail.smtp.port", "465");
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.trust", "true");
 		properties.put("mail.smtp.debug", "true");
 		properties.put("mail.smtp.socketFactory.post", "465");
 		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
@@ -48,9 +80,9 @@ public class MailSendAction extends HttpServlet {
 
 		try {
 			Authenticator auth = new Gmail();
-			Session ses = Session.getInstance(properties, auth);
-			ses.setDebug(true);
-			MimeMessage message = new MimeMessage(ses);
+			Session session = Session.getInstance(properties, auth);
+			session.setDebug(true);
+			MimeMessage message = new MimeMessage(session);
 			message.setSubject(subject);
 			Address fromAddress = new InternetAddress(from);
 			message.setFrom(fromAddress);
@@ -67,6 +99,7 @@ public class MailSendAction extends HttpServlet {
 			script.close();
 			return;
 		}
+		
 	}
 
 }

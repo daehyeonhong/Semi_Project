@@ -47,7 +47,7 @@ public class SearchController extends HttpServlet {
 		String items = request.getParameter("items"),
 				text = request.getParameter("text");
 		List<ProductDTO> productList = new ArrayList<ProductDTO>();
-		
+
 		productList = dao.getProductList(items,text);
 		request.setAttribute("items", items);
 		request.setAttribute("text", text);

@@ -5,6 +5,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@include file="numberFormat.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +30,8 @@
 </style>
 </head>
 <body>
-	<jsp:include page="menu.jsp" />
-	<%@include file="dbconn.jsp"%>
+	<%@ include file="menu.jsp"%>
+	<%@ include file="dbconn.jsp"%>
 	<%
 		String sql = "select * from ttproduct order by p_id";
 	PreparedStatement pstmt = con.prepareStatement(sql);
@@ -88,8 +89,7 @@
 		</div>
 	</div>
 	<!-- 상품 목록 -> 장바구니 갯수, 클릭시 바로 이동 -->
-	<div
-		style="width: 50px; height: 50px; position: fixed; top: 200px; right: 30px;">
+	<div style="width: 50px; height: 50px; position: fixed; top: 200px; right: 30px;">
 		<!--카트 리스트  -->
 		<%
 			List<Product> cartList = (List<Product>) session.getAttribute("cartlist");
@@ -124,7 +124,7 @@
 					style="width: 100%">
 				<h3><%=rs.getString("p_name")%></h3>
 				<p><%=rs.getString("p_description")%></p>
-				<p><%=rs.getInt("p_unitPrice")%></p>
+				<p><%=priceFormat.format(rs.getInt("p_unitPrice"))%></p>
 				<p>
 					<a href="./product.jsp?id=<%=rs.getString("p_id")%>"
 						class="btn btn-secondary" role="button">상세정보 &raquo;</a>

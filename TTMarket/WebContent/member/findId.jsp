@@ -50,7 +50,7 @@ function Find_id() {
     <br>
     <div class="container" id="container222" style="width: 500px;">
 				<input type="button" class="btn btn-success btn-lg" id="btn_ok" value="확인" onclick='Find_id()'	/>
-				<input type="button" class="btn btn-secondary btn-lg" id="btn_cancel" value="취소" onclick='location.href="../welcome.jsp"'/>
+				<input type="button" class="btn btn-secondary btn-lg" id="btn_cancel" value="취소" onclick='history.back()'/>
 			</div>
 </div>
 </form>

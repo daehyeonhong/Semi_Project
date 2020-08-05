@@ -6,7 +6,6 @@
 <%
 	request.setCharacterEncoding("utf-8");
 String id = request.getParameter("id");
-String password = request.getParameter("password");
 String name = request.getParameter("name");
 String gender = request.getParameter("gender");
 String birthyy = request.getParameter("birthyy");
@@ -35,8 +34,7 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	password="1234" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">
-	update ttmember set password=?,name=?,gender=?,birth=?,mail=?,phone=?,postcode=?,address=?,detailAddress=?,extraAddress=?,regist_day=? where id=?
-	<sql:param value="<%=password%>" />
+	update ttmember set name=?,gender=?,birth=?,mail=?,phone=?,postcode=?,address=?,detailAddress=?,extraAddress=?,regist_day=? where id=?
 	<sql:param value="<%=name%>" />
 	<sql:param value="<%=gender%>" />
 	<sql:param value="<%=birth%>" />
