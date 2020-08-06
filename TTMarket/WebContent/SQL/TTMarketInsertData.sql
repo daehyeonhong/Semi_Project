@@ -43,6 +43,11 @@ where s.sessionId=d.sessionid
 and s.sessionId='1' 
 ;
 
+update ttmember set mail='1' where id='1'
+
+select*from ttmember
+desc ttmember
+
 select * from ttsale;
 select * from ttdelivery;
 

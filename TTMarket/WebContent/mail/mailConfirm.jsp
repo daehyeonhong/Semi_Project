@@ -4,9 +4,12 @@
 <html>
 
 <head>
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이메일 인증</title>
 <style>
 html, body {
 	overflow: hidden;
@@ -20,20 +23,21 @@ html, body {
 
 			let yesNo = confirm('정말 인증 코드 메일을 발송하시겠습니까?');
 			if (yesNo) {
-			$.ajax({
-				type : 'POST',
-				url : '../mail/EmailCheck.mail',
-				dataType : 'text',
-				success : function(data) {
-					alert(data);
-					$('#presentCode').val(data);
+				$('#sendMailBtn').attr('type', 'hidden');
+				$('#loadMailBtn').removeAttr('hidden');
+				$.ajax({
+					type : 'POST',
+					url : '../mail/EmailCheck.mail',
+					dataType : 'text',
+					success : function(data) {
+						alert(data);
+						$('#presentCode').val(data);
+					}
+				});
+				} else {
+					alert('요청이 취소되었습니다.');
+					window.close();
 				}
-			});
-			} else {
-				alert('요청이 취소되었습니다.');
-				window.close();
-			}
-			
 		});
 
 		$('#checkCode').click(function() {
@@ -42,7 +46,7 @@ html, body {
 			if (resiveCode != '' && presentCode == resiveCode) {
 				alert('인증 성공');
 				window.opener.$('#mail1').attr("readonly", "readonly");
-				window.opener.$('#mail2').attr("readonly", "readonly");
+				window.opener.$('#mail2').attr("disabled", "disabled");
 				window.opener.$('#mailChecked').val('true');
 				window.opener.$('#mailBtn').attr("type", "hidden");
 				window.opener.$('#updMailBtn').attr("type", "button");
@@ -51,6 +55,7 @@ html, body {
 				window.close();
 			} else {
 				alert('인증 실패');
+				window.close();
 			}
 		})
 	});
@@ -65,7 +70,13 @@ html, body {
 	%>
 	<form action="" method="post">
 		<p>입력된 아이디:<%=email%></p>
-		<p><input type="button" id="sendMailBtn" value="메일보내기" /></p>
+		<p>
+			<input type="button" class="btn btn-primary" id="sendMailBtn" value="메일보내기">
+   		<button id="loadMailBtn" class="btn btn-primary" hidden="hidden" disabled="disabled">
+    		<span class="spinner-grow spinner-grow-sm"></span>
+		   Loading..
+		 </button>
+		</p>
 		<input type="text" id="reciveCode" placeholder="인증코드입력" />
 		<input type="hidden" id="presentCode" />
 		<input type="button" id="checkCode" value="인증하기" />

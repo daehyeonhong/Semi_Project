@@ -14,11 +14,11 @@ String birthdd = request.getParameter("birthdd");
 
 String birth = birthyy + "/" + birthmm + "/" + birthdd;
 
-String mail1 = request.getParameter("mail1");
+/* String mail1 = request.getParameter("mail1");
 String mail2 = request.getParameter("mail2");
 
 String email = mail1 + "@" + mail2;
-
+ */
 String phone = request.getParameter("phone");
 String postcode = request.getParameter("postcode");
 String address = request.getParameter("address");
@@ -34,11 +34,11 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	password="1234" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">
-	update ttmember set name=?,gender=?,birth=?,mail=?,phone=?,postcode=?,address=?,detailAddress=?,extraAddress=?,regist_day=? where id=?
+	update ttmember set name=?,gender=?,birth=?,phone=?,postcode=?,address=?,detailAddress=?,extraAddress=?,regist_day=? where id=?
 	<sql:param value="<%=name%>" />
 	<sql:param value="<%=gender%>" />
 	<sql:param value="<%=birth%>" />
-	<sql:param value="<%=email%>" />
+	<%-- <sql:param value="<%=email%>" /> --%>
 	<sql:param value="<%=phone%>" />
 	<sql:param value="<%=postcode%>" />
 	<sql:param value="<%=address%>" />

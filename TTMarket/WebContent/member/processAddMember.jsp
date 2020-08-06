@@ -15,14 +15,11 @@ String birthdd = request.getParameter("birthdd");
 String birth = birthyy + "/" + birthmm + "/" + birthdd;
 
 String mail1 = request.getParameter("mail1");
-String mail2 = request.getParameter("mail2");
+String mail2 = request.getParameter("mail2Val");
 String mail = mail1 + "@" + mail2;
 
-String phone1 = request.getParameter("phone1");
-String phone2 = request.getParameter("phone2");
-String phone3 = request.getParameter("phone3");
 
-String phone = phone1 + "-" + phone2 + "-" + phone3;
+String phone = request.getParameter("phone");
 
 String postcode = request.getParameter("postcode");
 String address = request.getParameter("address");

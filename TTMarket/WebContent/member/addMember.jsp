@@ -141,6 +141,7 @@
 				let email = $('#mail1').val().trim();
 				let com =  $('#mail2').val().trim();
 				if (email != '') {
+				$('#mail2Val').val(com);
 				window.open("../mail/mailConfirm.jsp?mail1="+email+"&mail2="+com, 'mail인증', "_blank",
 						"toolbar=yes", "scrollbars=yes",
 				"resizable=yes,top=500,left=500,width=50,height=50");
@@ -151,10 +152,12 @@
 			
 			$('#updMailBtn').click(function () {
 				$('#mail1').removeAttr("readonly");
-				$('#mail2').removeAttr("readonly");
+				$('#mail2').removeAttr("disabled");
+				$('#mail2Val').val('');
 				$('#mailBtn').attr("type", "button");
 				$('#updMailBtn').attr("type", "hidden");
 				$('#mailChecked').val('false');
+				$('#mail1').val('');
 			});
 		});
 		
@@ -340,6 +343,7 @@
 							<input class="btn btn-info" type="button" id="mailBtn" value="이메일 인증">
 							<input class="btn btn-warning" style="color: #FFF;" type="hidden" id="updMailBtn" value="이메일 변경">
 					  </div>
+							<input type="text" id="mail2Val" name="mail2Val" /> 
 							<input type="hidden" id="mailChecked" value="false" /> 
 				      </div>
 				    </div>

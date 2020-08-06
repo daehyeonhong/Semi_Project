@@ -75,6 +75,7 @@
 				      <ul class="dropdown-menu">
 		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/updateMember.jsp">회원수정</a></li>
 		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/updatePassword.jsp">비밀번호 변경</a></li>
+		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/updateMail.jsp">E-Mail 변경</a></li>
 		      			<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/deleteMember.jsp">회원 탈퇴</a></li>
 				      </ul>
 		      	</div>

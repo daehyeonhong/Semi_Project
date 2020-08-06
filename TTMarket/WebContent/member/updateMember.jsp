@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
@@ -22,6 +24,8 @@
 <body>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+	$().ready(function () {
+	});
 		function submitBtn() {
 			let yesNo = confirm('정말 정보를 변경하시겠습니까?');
 			if (yesNo) {
@@ -180,23 +184,27 @@
 							placeholder="일" size="4" value='<c:out value="${day}"/>'>
 					</div>
 				</div>
-
+				
 				<div class="form-group row">
-					<label class="col-sm-2">EMail</label>
-					<div class="col-sm-10">
-						<input name="mail1" class="form-control col-sm-3"
-							style="display: inline-block;" maxlength="50" value="${mail1}" />
-						<span>@</span> <select class="form-control col-sm-2"
-							style="display: inline-block;" name="mail2">
-							<option value="naver.com"
+					<div class="input-group mb-3">
+						<label class="col-sm-2">이메일</label>
+			      <input name="mail1" id="mail1" maxlength="50" class="form-control col-sm-3" placeholder="Your Email" value="${mail1}" readonly="readonly" required="required"/>
+			      <div class="input-group-prepend">
+			        <span class="input-group-text">@</span>
+			      </div>
+			      <div class="input-group-append">
+			        <select name="mail2" id="mail2" disabled="disabled">
+								<option value="naver.com"
 								<c:if test="${mail2=='naver.com'}">selected</c:if>>naver.com</option>
 							<option value="daum.net"
 								<c:if test="${mail2=='daum.net'}">selected</c:if>>daum.net</option>
 							<option value="gmail.com"
 								<c:if test="${mail2=='gmail.com'}">selected</c:if>>gmail.com</option>
-						</select>
+							</select>
+				      </div>
+				    </div>
 					</div>
-				</div>
+				
 				<div class="form-group row">
 					<label class="col-sm-2">전화번호</label>
 					<div class="col-sm-3">
@@ -211,7 +219,7 @@
 					<input class="form-control col-sm-2" type="text" id="postcode"
 						placeholder="우편번호" name="postcode" value='${row.postcode}' />
 					<div class="input-group-append">
-						<button class="btn btn-secondary" onclick="execDaumPostcode()"
+						<button class="btn btn-info" onclick="execDaumPostcode()"
 							type="button">우편번호 찾기</button>
 					</div>
 				</div>
