@@ -120,6 +120,8 @@
 			});
 			
 			$("#resetBtn").click(function() {
+				let yesNo = confirm('정말 초기화하시겠습니까?');
+				if (yesNo) {
 				$("#checkPasswordResult").attr('class', '');
 				$("#checkPasswordResult").html('');
 				$("#id").removeAttr("readonly");
@@ -135,6 +137,9 @@
 				$('#result').html('');
 				$("#id").focus();
 				$('#newMember')[0].reset();
+				} else {
+					alert('요청이 취소되었습니다.');
+				}
 			});
 			
 			$('#mailBtn').click(function () {
