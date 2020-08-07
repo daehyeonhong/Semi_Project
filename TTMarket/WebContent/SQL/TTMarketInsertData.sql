@@ -44,6 +44,7 @@ and s.sessionId='1'
 ;
 
 update ttmember set mail='1' where id='1'
+update ttsale set status='2'
 
 select*from ttmember
 desc ttmember

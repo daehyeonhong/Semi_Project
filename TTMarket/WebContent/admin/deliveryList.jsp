@@ -83,15 +83,15 @@
 				<tr>
 					<c:forEach var="columnValue" items="${row}" varStatus="i">
 						<c:choose>
-							<c:when test="${i.index == 10}">
-								<c:forEach var="status" begin="1" end="6" varStatus="j">
-									<td><select>
-											<c:if test="${j.index == column}">
-												<option selected="selected">j.index</option>
+							<c:when test="${i.last}">
+								<td><select>
+										<c:forEach var="status" begin="1" end="6" varStatus="j">
+											<c:if test="${status == column.last}">
+												<option selected="selected"><c:out value="${status}"/></option>
 											</c:if>
-											<option>j.index</option>
-									</select></td>
-								</c:forEach>
+											<option><c:out value="${status}"/></option>
+										</c:forEach>
+								</select></td>
 							</c:when>
 							<c:otherwise>
 								<td><c:out value="${columnValue}" /></td>
