@@ -73,4 +73,7 @@ SELECT*FROM TTPRODUCT WHERE p_id LIKE upper('%P%')ORDER BY P_ID DESC
 select p_unitsinstock from ttproduct where p_id='P1237'
 alter table ttproduct change p_unitsinstock p_unitsinstock int
 
+drop table ttstatus
+insert into ttstatus (status) values(6);
+
 UPDATE TTSALE SET STATUS=3 WHERE PRODUCTID='P1235' AND SEQ='2;'
