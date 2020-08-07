@@ -52,7 +52,7 @@
 		url="jdbc:mysql://localhost:3306/WebMarketDB?UseSSL=false" user="root"
 		password="1234" />
 	<sql:query var="resultSet" dataSource="${dataSource}">
-			SELECT DISTINCT S.DELIVERYSEQ,S.SALEDATE,S.PRODUCTID,S.SALEQTY,D.NAME,D.DELIVERYDATE,D.NATION,D.ZIPCODE,D.ADDRESS,S.STATUS,S.SESSIONID,S.SEQ FROM TTSALE S, TTDELIVERY D WHERE S.deliverySeq=D.SEQ AND S.STATUS NOT IN(6) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID
+			SELECT DISTINCT S.DELIVERYSEQ,S.SEQ,S.SESSIONID,D.NAME,S.PRODUCTID,S.SALEQTY,S.SALEDATE,D.DELIVERYDATE,CONCAT_WS(D.NATION,D.ZIPCODE,D.ADDRESS),S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.deliverySeq=D.SEQ AND S.STATUS NOT IN(6) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID
 		</sql:query>
 	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron">
@@ -60,12 +60,12 @@
 			<h1 class="display-3">배송 관리</h1>
 		</div>
 	</div>
-	<!-- <div class="container col-10">
-		<table class="table table-hover table-bordered"> -->
+	<div class="container col-10">
+		<table class="table table-hover table-bordered">
 			<caption>배송 관리</caption>
 			<thead class="thead-dark">
 				<tr>
-					<th><small>주문 코드</small></th>
+					<!-- <th><small>주문 코드</small></th>
 					<th><small>주문일</small></th>
 					<th><small>제품 코드</small></th>
 					<th><small>수량</small></th>
@@ -73,17 +73,34 @@
 					<th><small>고객명</small></th>
 					<th><small>배송일</small></th>
 					<th><small>배송 주소(국가) -- (주소) -- (우편번호)</small></th>
-					<th><small>배송 상태</small></th>
+					<th><small>배송 상태</small></th> -->
+					<c:forEach var="columnNames" items="${resultSet.columnNames}">
+						<th><c:out value="${columnNames}"></c:out></th>
+					</c:forEach>
 				</tr>
 			</thead>
 			<c:forEach var="row" items="${resultSet.rowsByIndex}">
-				<c:forEach var="column" items="${row}">
-				${column}
-					<%-- <c:set var="deliverySeq" value="${column.getInt('S.DELIVERSEQ')}" />
-					${deliverSeq} --%>
-				</c:forEach>
+				<tr>
+					<c:forEach var="columnValue" items="${row}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index == 10}">
+								<c:forEach var="status" begin="1" end="6" varStatus="j">
+									<td><select>
+											<c:if test="${j.index == column}">
+												<option selected="selected">j.index</option>
+											</c:if>
+											<option>j.index</option>
+									</select></td>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<td><c:out value="${columnValue}" /></td>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</tr>
 			</c:forEach>
-			
+
 			<%-- 
 			<%
 				while (searchResultSet.next()) {
@@ -113,8 +130,10 @@
 			<%
 				}
 			%>
+			<hr />
 		</table>
-		<hr />
+	</div> --%>
+		</table>
 	</div>
 	<div class="container col-10">
 		<table>
@@ -124,7 +143,7 @@
 					class="btn btn-secondary">&laquo;상품 목록</a></td>
 			</tr>
 		</table>
-	</div> --%>
+	</div>
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
