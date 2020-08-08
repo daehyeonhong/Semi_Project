@@ -12,7 +12,7 @@
 
 # Package Files #
 *.jar
-*.war
+
 *.nar
 *.ear
 *.zip
@@ -26,4 +26,3 @@ hs_err_pid*
 /Servers
 *.Servers/
 Servers/
-MailAddress.properties
