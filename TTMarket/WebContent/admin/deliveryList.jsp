@@ -17,22 +17,22 @@
 		function changeStatusConfirm(id, productId, status) {
 			let statusStr;
 			switch (status) {
-			case 1:
+			case '1':
 				statusStr = "결제 완료";
 				break;
-			case 2:
+			case '2':
 				statusStr = "배송 접수";
 				break;
-			case 3:
+			case '3':
 				statusStr = "배송 중";
 				break;
-			case 4:
+			case '4':
 				statusStr = "배송 완료";
 				break;
-			case 5:
+			case '5':
 				statusStr = "수령 완료";
 				break;
-			case 6:
+			case '6':
 				statusStr = "구매 확정";
 				break;
 			}
