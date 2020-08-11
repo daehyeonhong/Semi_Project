@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../dbconn.jsp"%>
 <%
-	String sql = "update ttmember set mail=? where id=?";
+	String sql = "UPDATE TTMember SET mail=? WHERE id=?";
 	PreparedStatement preparedStatement = con.prepareStatement(sql);
 	String id = (String) session.getAttribute("sessionId"),
 	mail1 = request.getParameter("mail1"),

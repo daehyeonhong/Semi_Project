@@ -38,7 +38,7 @@
 	<%
 		request.setCharacterEncoding("UTF-8");
 	int seq = Integer.parseInt(request.getParameter("seq"));
-	String sql = "select*from ttcategory where seq=?";
+	String sql = "SELECT*FROM TTCategory WHERE seq=?";
 	PreparedStatement preparedStatement = con.prepareStatement(sql);
 	preparedStatement.setInt(1, seq);
 	ResultSet resultSet = preparedStatement.executeQuery();

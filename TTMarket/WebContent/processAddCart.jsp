@@ -5,7 +5,7 @@
 <%
 	String p_id = request.getParameter("id");
 int qty = Integer.parseInt(request.getParameter("qty"));
-String sql = "select p_unitsinstock from ttproduct where p_id=?";
+String sql = "SELECT p_unitsInStock FROM TTProduct WHERE p_id=?";
 try {
 	PreparedStatement preparedStatement = con.prepareStatement(sql);
 	preparedStatement.setString(1, p_id);

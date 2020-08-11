@@ -33,9 +33,9 @@
 		</div>
 		<div class="row justify-content-between">
 			<%
-				String sql = "select distinct s.deliveryseq,s.saleDate,s.productId,s.saleQty,s.unitprice,s.status,d.name,d.address,d.zipcode"
-					+ " from ttsale s,ttdelivery d where s.sessionId=d.sessionId and"
-					+ " s.deliveryseq=d.seq and s.status not in (5) and s.sessionid=? group by s.seq";
+				String sql = "SELECT DISTINCT s.deliverySeq,s.saleDate,s.productId,s.saleQty,s.unitPrice,s.status,d.name,d.address,d.zipCode"
+					+ " from TTSale s,TTDelivery d where s.sessionId=d.sessionId and"
+					+ " s.deliverySeq=d.seq and s.status not in (6) and s.sessionId=? GROUP BY s.seq";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customerId);
 			ResultSet rs = pstmt.executeQuery();

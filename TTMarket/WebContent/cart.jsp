@@ -47,7 +47,6 @@ if (cartList == null || (cartList.size() == 0)) {
 	}
 
 	function change(id) {
-		/* let id = document.getElementById("id").value.substring(0, 5); */
 		let qty = document.getElementById(id).value;
 		let name = document.getElementById(id).name;
 		if (qty < 0) {

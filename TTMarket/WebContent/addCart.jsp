@@ -16,7 +16,7 @@ if (id == null || id.trim().equals("")) {/* [ID_Value]가 넘어오지 않았으
 }
 
 /* [ID_Value]가 존재하면 상품처리 객체 생성 */
-String sql = "select*from ttproduct where p_id=?";
+String sql = "SELECT*FROM TTProduct WHERE p_id=?";
 PreparedStatement preparedStatement = con.prepareStatement(sql);
 preparedStatement.setString(1, id);
 ResultSet resultSet = preparedStatement.executeQuery();
@@ -80,7 +80,4 @@ resultSet.close();
 preparedStatement.close();
 con.close();
 response.sendRedirect("product.jsp?id=" + id);
-/* request.setAttribute("id", id);
-RequestDispatcher requestDispatcher = request.getRequestDispatcher("product.jsp?id=" + id);
-requestDispatcher.forward(request, response); */
 %>

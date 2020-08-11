@@ -34,7 +34,7 @@
 
 <% 
 	try {
-		sql = "select * from ttmember where name=? and mail=? and phone=?";
+		sql = "SELECT*FROM TTMember WHERE name=? AND mail=? AND phone=?";
 		pstmt = con.prepareStatement(sql);
 	 	pstmt.setString(1, name);
 		pstmt.setString(2, mail);

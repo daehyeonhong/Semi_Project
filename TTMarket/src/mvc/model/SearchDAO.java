@@ -23,8 +23,8 @@ public class SearchDAO {
 		ResultSet resultSet = null;
 		
 		String sql = (items == null || text.trim().length() == 0)
-				? "SELECT*FROM TTPRODUCT ORDER BY P_ID DESC"
-				: ("SELECT*FROM TTPRODUCT WHERE " + items + " LIKE upper('%" + text.toUpperCase() + "%')ORDER BY P_ID DESC");
+				? "SELECT*FROM TTProduct ORDER BY p_id DESC"
+				: ("SELECT*FROM TTProduct WHERE " + items + " LIKE UPPER('%" + text.toUpperCase() + "%')ORDER BY p_id DESC");
 
 		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
 		try {

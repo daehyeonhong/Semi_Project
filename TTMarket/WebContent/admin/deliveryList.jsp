@@ -50,7 +50,7 @@
 		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
 		password="1234" />
 	<sql:query var="resultSet" dataSource="${dataSource}">
-		SELECT DISTINCT S.DELIVERYSEQ,S.SEQ,S.SESSIONID,D.NAME,S.PRODUCTID,S.SALEQTY,S.SALEDATE,D.DELIVERYDATE,CONCAT_WS(D.NATION,D.ZIPCODE,D.ADDRESS),S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.deliverySeq=D.SEQ AND S.STATUS NOT IN(6) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID
+		SELECT DISTINCT S.deliverySeq,S.seq,S.sessionId,D.name,S.productId,S.saleQty,S.saleDate,D.deliveryDate,CONCAT_WS(D.nation,D.zipCode,D.address),S.STATUS FROM TTSale S, TTDelivery D WHERE S.deliverySeq=D.seq AND S.status NOT IN(6) GROUP BY S.seq ORDER BY S.seq,S.ProductId
 	</sql:query>
 	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron">

@@ -9,7 +9,7 @@
 	password="1234" />
 <c:catch var="ex">
 	<sql:update dataSource="${dataSource}" var="resultSet">
-    delete from ttmember where id=?
+    DELETE FROM TTMember WHERE id=?
     <sql:param value="<%=sessionId%>" />
 	</sql:update>
 </c:catch>

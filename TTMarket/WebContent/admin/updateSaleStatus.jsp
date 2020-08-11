@@ -19,7 +19,7 @@
 		password="1234" />
 	<%-- db update처리 --%>
 	<sql:update dataSource="${dataSource}" var="resultSet">
-    update ttsale set status=? where seq=? and productId=?
+    UPDATE TTSale SET status=? WHERE seq=? AND productId=?
     <sql:param value="<%=status%>" />
 		<sql:param value="<%=seq%>" />
 		<sql:param value="<%=pid%>" />

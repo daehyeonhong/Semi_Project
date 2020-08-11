@@ -33,7 +33,7 @@
 	<%@ include file="menu.jsp"%>
 	<%@ include file="dbconn.jsp"%>
 	<%
-		String sql = "select * from ttproduct order by p_id";
+		String sql = "SELECT*FROM TTProduct ORDER BY p_id";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();
 	%>
@@ -110,7 +110,7 @@
 </svg><%=cartList.size()%></a>
 	</div>
 	<%
-		sql = "select * from ttproduct order by p_id";
+		sql = "SELECT*FROM TTProduct ORDER BY p_id";
 	pstmt = con.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	%>

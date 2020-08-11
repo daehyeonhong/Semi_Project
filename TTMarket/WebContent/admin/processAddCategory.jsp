@@ -6,7 +6,7 @@
 String categoryName = request.getParameter("categoryName");
 String description = request.getParameter("description");
 //db에 저장 - 오늘의 과제
-String sql = "insert into ttcategory(categoryName,description) values(?,?)";
+String sql = "INSERT INTO TTCartegory(categoryName,description)VALUES(?,?)";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setString(1, categoryName);
 pstmt.setString(2, description);

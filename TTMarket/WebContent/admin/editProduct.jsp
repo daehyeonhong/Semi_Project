@@ -34,7 +34,7 @@
 		<div class="row" align="center">
 			<%@include file="../dbconn.jsp"%>
 			<%
-				String sql = "select * from ttproduct";
+				String sql = "SELECT*FROM TTProduct";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

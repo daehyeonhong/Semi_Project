@@ -5,7 +5,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="../dbconn.jsp"%>
 <%
-	String sql = "select concat('P',cast(substr(max(p_id),2) as unsigned)+1) from ttproduct";
+	String sql = "SELECT CONCAT('P',CAST(SUBSTR(MAX(p_id),2) AS UNSIGNED)+1) FROM TTProduct";
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rs = pstmt.executeQuery();
 String pid = "";
@@ -74,7 +74,7 @@ if (rs.next())
 					<div class="col-sm-3">
 						<select name="category" class="form-control" id="category">
 							<%
-								sql = "select categoryName from ttcategory order by seq";
+								sql = "SELECT categoryName FROM TTCategory ORDER BY seq";
 							pstmt = con.prepareStatement(sql);
 							rs = pstmt.executeQuery();
 							%>

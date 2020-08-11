@@ -18,7 +18,7 @@ password="1234"
 
 <%--  조회 --%>
 <sql:query var="resultSet" dataSource="${dataSource}">
-  select * from ttmember where id=? and password=?
+  SELECT*FROM TTMember WHERE id=? AND password=?
   <sql:param value="<%=id%>"/>
   <sql:param value="<%=pwd%>"/>
 </sql:query>

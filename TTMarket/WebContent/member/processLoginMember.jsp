@@ -11,7 +11,7 @@ String password = request.getParameter("password");
 	password="1234" />
 <%-- 조회 --%>
 <sql:query dataSource="${dataSource}" var="resultSet">
-  select*from ttmember where id=?and password=?
+  SELECT*FROM TTMember WHERE id=?AND password=?
   <sql:param value="<%=id%>" />
 	<sql:param value="<%=password%>" />
 </sql:query>

@@ -6,7 +6,7 @@
 <%@page import="com.oreilly.servlet.*"%>
 <%@include file="../dbconn.jsp"%>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
 %>
 <jsp:useBean id="product" class="dto.Product" />
 <jsp:setProperty property="*" name="product" />
@@ -46,14 +46,14 @@ String fname = (String) files.nextElement();
 String fileName = multi.getFilesystemName(fname);
 
 //쿼리객체 생성
-String sql = "select*from ttproduct where p_id=?";
+String sql = "SELECT*FROM TTProduct WHERE p_id=?";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setString(1, productId);
 ResultSet rs = pstmt.executeQuery();
 
 if (rs.next()) {
 	if (fileName != null) {//파일전송시 처리
-		sql = "update ttproduct set p_name=?,p_unitPrice=?,p_description=?,p_category=?,p_manufacturer=?,p_unitsInStock=?,p_condition=?,p_fileName=? where p_id=?";
+		sql = "UPDATE TTProduct SET p_name=?,p_unitPrice=?,p_description=?,p_category=?,p_manufacturer=?,p_unitsInStock=?,p_condition=?,p_fileName=? WHERE p_id=?";
 		pstmt = con.prepareStatement(sql);
 		//바인딩변수 설정
 		pstmt.setString(1, name);
@@ -68,7 +68,7 @@ if (rs.next()) {
 		//입력실행
 		pstmt.executeUpdate();
 	} else {//파일 미 전송시 처리
-		sql = "update ttproduct set p_name=?,p_unitPrice=?,p_description=?,p_category=?,p_manufacturer=?,p_unitsInStock=?,p_condition=? where p_id=?";
+		sql = "UPDATE TTProduct SET p_name=?,p_unitPrice=?,p_description=?,p_category=?,p_manufacturer=?,p_unitsInStock=?,p_condition=? WHERE p_id=?";
 		pstmt = con.prepareStatement(sql);
 		//바인딩변수 설정
 		pstmt.setString(1, name);

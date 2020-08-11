@@ -55,7 +55,7 @@
 		DecimalFormat priceDf = new DecimalFormat("\u00A4 #,###");
 	DecimalFormat df = new DecimalFormat("#,###");
 	String id = request.getParameter("id");
-	String sql = "select*from ttproduct where p_id=?";
+	String sql = "SELECT*FROM TTProduct WHERE p_id=?";
 	PreparedStatement preparedStatement = con.prepareStatement(sql);
 	preparedStatement.setString(1, id);
 	ResultSet resultSet = preparedStatement.executeQuery();

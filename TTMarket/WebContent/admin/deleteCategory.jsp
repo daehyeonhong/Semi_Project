@@ -3,7 +3,7 @@
 <%@include file="../dbconn.jsp" %>
 <%
 	String categoryName= request.getParameter("categoryName");
-	String sql="delete from ttcategory where categoryName=?";
+	String sql="DELETE FROM TTCategory WHERE categoryName=?";
 	con.setAutoCommit(false);
 	
 	PreparedStatement pstmt = con.prepareStatement(sql);

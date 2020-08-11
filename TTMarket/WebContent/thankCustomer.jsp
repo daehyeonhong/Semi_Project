@@ -49,7 +49,7 @@
 		int deliverySeq = 0;
 		try {
 			PreparedStatement pstmtD = null;
-			String sql = "select ifnull(max(seq),0) from ttdelivery";
+			String sql = "SELECT IFNULL(MAX(seq),0) FROM TTDelivery";
 			pstmtD = con.prepareStatement(sql);
 			ResultSet resultSet = pstmtD.executeQuery();
 			if(resultSet.next())
@@ -64,7 +64,7 @@
 	try {
 		PreparedStatement pstmt = null;
 		for (int i = 0; i < list.size(); i++) {
-			String sql1 = "insert into ttsale(saledate,sessionId,productId,unitprice,saleqty,deliveryseq,status) values (?,?,?,?,?,?,1)";
+			String sql1 = "INSERT INTO TTSale(saleDate,sessionId,productId,unitPrice,saleQty,deliverySeq,status)VALUES(?,?,?,?,?,?,1)";
 			pstmt = con.prepareStatement(sql1);
 
 			pstmt.setString(1, sdf.format(saleDate));
@@ -77,7 +77,7 @@
 			pstmt.executeUpdate();
 		}
 
-		String sql2 = "insert into ttdelivery(sessionId,name,deliverydate,nation,zipcode,address) values(?,?,?,?,?,?)";
+		String sql2 = "INSERT INTO TTDelivery(sessionId,name,deliveryDate,nation,zipCode,address)VALUES(?,?,?,?,?,?)";
 		pstmt = con.prepareStatement(sql2);
 		pstmt.setString(1, shipping_cartId);
 		pstmt.setString(2, shipping_name);

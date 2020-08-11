@@ -32,7 +32,7 @@
 %>
 <%
 try{
-	sql="select password from ttmember where id=? and name=? and mail=?";
+	sql="SELECT PASSWORD FROM TTMember WHERE id=? AND name=? AND mail=?";
 	pstmt = con.prepareStatement(sql);	
 	pstmt.setString(1, id);
 	pstmt.setString(2, name);

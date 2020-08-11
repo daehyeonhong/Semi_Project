@@ -14,7 +14,7 @@
 <body>
 	<%
 		String p_id = request.getParameter("id");
-	String sql = "select * from ttproduct where p_id=?";
+	String sql = "SELECT*FROM TTProduct WHERE p_id=?";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	pstmt.setString(1, p_id);
 	ResultSet rs = pstmt.executeQuery();
@@ -79,7 +79,7 @@
 					<div class="col-sm-3">
 						<select name="category" class="form-control" id="category">
 							<%
-								String sql2 = "select categoryName from ttcategory order by seq";
+								String sql2 = "SELECY categoryName FROM TTCategory ORDER BY seq";
 							PreparedStatement pstmt2 = con.prepareStatement(sql2);
 							ResultSet rs2 = pstmt2.executeQuery();
 							while (rs2.next()) {

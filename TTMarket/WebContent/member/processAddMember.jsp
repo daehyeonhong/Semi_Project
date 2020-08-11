@@ -58,7 +58,7 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	<%--db 저장 --%>
 	<c:catch var="except">
 		<sql:update dataSource="${dataSource}" var="resultSet">
- insert into ttmember values(?,?,?,?,?,?,?,?,?,?,?,?,'새싹')
+ INSERT INTO TTMember VALUES(?,?,?,?,?,?,?,?,?,?,?,?,'새싹')
  <sql:param value="<%=id%>" />
 			<sql:param value="<%=password%>" />
 			<sql:param value="<%=name%>" />

@@ -35,7 +35,7 @@
 				</tr>
 			</thead>
 			<%
-				String sql = "select*from ttcategory";
+				String sql = "SELECT*FROM TTCategory";
 			PreparedStatement preparedStatement = con.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {

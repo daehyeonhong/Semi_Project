@@ -38,7 +38,7 @@
 			password="1234" />
 		<c:catch var="ex">
 			<sql:query var="resultSet" dataSource="${dataSource}">
-  select * from ttmember where id=? and password=?
+  SELECT*FROM TTMember WHERE id=? AND password=?
   <sql:param value="<%=id%>" />
 				<sql:param value="<%=oldPassword%>" />
 			</sql:query>
@@ -47,7 +47,7 @@ ${ex}
 
 <c:forEach items="${resultSet.rows}">
 			<sql:update var="result" dataSource="${dataSource}">
-	  update ttmember set password=? where id=?
+	  UPDATE TTMember SET password=? WHERE id=?
 	 <sql:param value="${newPassword}" />
 				<sql:param value="${id}" />
 			</sql:update>

@@ -15,7 +15,7 @@
 	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
 	password="1234" />
 <sql:query var="resultSet" dataSource="${dataSource}">
-  select * from ttmember where id=?
+  SELECT*FROM TTMember WHERE id=?
   <sql:param value="<%=sessionId%>" />
 </sql:query>
 <meta charset="UTF-8">

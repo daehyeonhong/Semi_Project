@@ -27,7 +27,7 @@
 		}
 	</script>
 	<%
-		String sql = "select name,postcode,address,detailaddress,extraaddress from ttmember where id=?",
+		String sql = "SELECT name,postcode,address,detailAddress,extraAddress FROM TTMember WHERE id=?",
 				id = (String) session.getAttribute("sessionId"),
 				name = null,
 				postcode = null,

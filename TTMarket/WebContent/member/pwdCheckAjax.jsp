@@ -17,7 +17,7 @@ password="1234"
 
 <%--  조회 --%>
 <sql:update var="resultSet" dataSource="${dataSource}">
-  update ttmember set password=? where id=?
+  UPDATE TTMember SET password=? WHERE id=?
   <sql:param value="<%=pwd%>"/>
   <sql:param value="<%=id%>"/>
 </sql:update>

@@ -18,7 +18,7 @@ password="1234"
 
 <%--  조회 --%>
 <sql:query var="resultSet" dataSource="${dataSource}">
-  select password from ttmember where id=? and name=? and mail=?
+  SELECT PASSWORD FROM TTMember WHERE id=? AND name=? AND mail=?
   <sql:param value="<%=id%>"/>
   <sql:param value="<%=name%>"/>
   <sql:param value="<%=mail%>"/>
