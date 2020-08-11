@@ -14,7 +14,7 @@ public class DBConnection {
 	
 	public Connection getConnection() {
 		Connection connection = null;
-		String url = "jdbc:mysql://localhost:3306/WebMarketDB?useSSL=false",
+		String url = "jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false",
 				user = "root",
 				password = "1234";
 		try {

@@ -15,7 +15,7 @@
 	%>
 	<%-- db 연결설정 --%>
 	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/WebMarketDB?UseSSL=false" user="root"
+		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
 		password="1234" />
 	<%-- db update처리 --%>
 	<sql:update dataSource="${dataSource}" var="resultSet">

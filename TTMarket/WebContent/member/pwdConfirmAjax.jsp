@@ -11,7 +11,7 @@ String pwd=request.getParameter("oldpwd");
 <sql:setDataSource
 var="dataSource"
 driver="com.mysql.jdbc.Driver"
-url="jdbc:mysql://localhost:3306/WebMarketDB"
+url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false"
 user="root"
 password="1234"
 />

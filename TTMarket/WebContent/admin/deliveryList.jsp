@@ -47,7 +47,7 @@
 		}
 	</script>
 	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/WebMarketDB?UseSSL=false" user="root"
+		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
 		password="1234" />
 	<sql:query var="resultSet" dataSource="${dataSource}">
 		SELECT DISTINCT S.DELIVERYSEQ,S.SEQ,S.SESSIONID,D.NAME,S.PRODUCTID,S.SALEQTY,S.SALEDATE,D.DELIVERYDATE,CONCAT_WS(D.NATION,D.ZIPCODE,D.ADDRESS),S.STATUS FROM TTSALE S, TTDELIVERY D WHERE S.deliverySeq=D.SEQ AND S.STATUS NOT IN(6) GROUP BY S.SEQ ORDER BY S.SEQ,S.PRODUCTID
