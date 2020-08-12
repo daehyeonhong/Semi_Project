@@ -19,6 +19,15 @@
 </c:if>
 </head>
 <body>
+<script>
+	function deleteConfirm(id) {
+		if (confirm("해당 상품 " + id + "을 삭제합니다.!!") == true) {
+			location.href = 'deleteProduct.jsp?id=' + id;
+		} else {
+			return;
+		}
+	}
+</script>
 	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
@@ -77,12 +86,3 @@
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
-<script>
-	function deleteConfirm(id) {
-		if (confirm("해당 상품 " + id + "을 삭제합니다.!!") == true) {
-			location.href = 'deleteProduct.jsp?id=' + id;
-		} else {
-			return;
-		}
-	}
-</script>

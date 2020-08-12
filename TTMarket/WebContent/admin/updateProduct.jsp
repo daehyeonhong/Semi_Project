@@ -79,7 +79,7 @@
 					<div class="col-sm-3">
 						<select name="category" class="form-control" id="category">
 							<%
-								String sql2 = "SELECY categoryName FROM TTCategory ORDER BY seq";
+								String sql2 = "SELECT categoryName FROM TTCategory ORDER BY seq";
 							PreparedStatement pstmt2 = con.prepareStatement(sql2);
 							ResultSet rs2 = pstmt2.executeQuery();
 							while (rs2.next()) {
