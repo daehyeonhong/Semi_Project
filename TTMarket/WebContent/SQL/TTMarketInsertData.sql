@@ -78,5 +78,7 @@ drop table ttstatus
 insert into ttstatus (status) values(6);
 desc ttsale
 UPDATE TTSALE SET STATUS=3 WHERE PRODUCTID='P1235' AND SEQ='2;'
+select*from TTMember;
+
 
 update ttsale set status=1 where productId='P1234' and seq=1
