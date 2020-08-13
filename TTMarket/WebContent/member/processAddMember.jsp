@@ -51,9 +51,9 @@ Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 	<%=detailAddress%><br>
 	<%=extraAddress%><br>
 	<%=grade%><br>
-	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-		password="1234" />
+	<sql:setDataSource var="dataSource" driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@15.165.66.140:1521:xe" user="ttestt"
+		password="ttestt11" />
 
 	<%--db 저장 --%>
 	<c:catch var="except">

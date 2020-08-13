@@ -46,9 +46,9 @@
 			}
 		}
 	</script>
-	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-		password="1234" />
+	<sql:setDataSource var="dataSource" driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@15.165.66.140:1521:xe" user="ttestt"
+		password="ttestt11" />
 	<sql:query var="resultSet" dataSource="${dataSource}">
 		SELECT DISTINCT S.deliverySeq,S.seq,S.sessionId,D.name,S.productId,S.saleQty,S.saleDate,D.deliveryDate,CONCAT_WS(D.nation,D.zipCode,D.address),S.STATUS FROM TTSale S, TTDelivery D WHERE S.deliverySeq=D.seq AND S.status NOT IN(6) GROUP BY S.seq ORDER BY S.seq,S.ProductId
 	</sql:query>

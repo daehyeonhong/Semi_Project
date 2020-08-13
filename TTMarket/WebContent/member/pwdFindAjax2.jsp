@@ -10,10 +10,10 @@ String mail=request.getParameter("mail");
 <%-- db접속 member테이블에서 조회 --%>
 <sql:setDataSource
 var="dataSource"
-driver="com.mysql.jdbc.Driver"
-url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false"
-user="root"
-password="1234"
+driver="oracle.jdbc.driver.OracleDriver"
+url="jdbc:oracle:thin:@15.165.66.140:1521:xe"
+user="ttestt"
+password="ttestt11"
 />
 
 <%--  조회 --%>
