@@ -34,8 +34,8 @@
 		test="${(id!=null) and (oldPassword!=null) and (newPassword!=null)}">
 		<%-- db접속 member테이블에서 조회 --%>
 		<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-			password="1234" />
+			url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="ttestt"
+			password="ttestt11#" />
 		<c:catch var="ex">
 			<sql:query var="resultSet" dataSource="${dataSource}">
   SELECT*FROM TTMember WHERE id=? AND password=?

@@ -12,8 +12,8 @@ String pwd=request.getParameter("oldpwd");
 var="dataSource"
 driver="com.mysql.jdbc.Driver"
 url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false"
-user="root"
-password="1234"
+user="ttestt"
+password="ttestt11#"
 />
 
 <%--  조회 --%>

@@ -15,8 +15,8 @@ public class DBConnection {
 	public Connection getConnection() {
 		Connection connection = null;
 		String url = "jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false",
-				user = "root",
-				password = "1234";
+				user = "ttestt",
+				password = "ttestt11#";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(url, user, password);

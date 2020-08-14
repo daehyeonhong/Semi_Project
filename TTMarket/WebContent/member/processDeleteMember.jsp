@@ -5,8 +5,8 @@
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
 <sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-	password="1234" />
+	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="ttestt"
+	password="ttestt11#" />
 <c:catch var="ex">
 	<sql:update dataSource="${dataSource}" var="resultSet">
     DELETE FROM TTMember WHERE id=?

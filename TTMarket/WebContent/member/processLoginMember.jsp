@@ -7,8 +7,8 @@ String id = request.getParameter("id");
 String password = request.getParameter("password");
 %>
 <sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-	password="1234" />
+	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="ttestt"
+	password="ttestt11#" />
 <%-- 조회 --%>
 <sql:query dataSource="${dataSource}" var="resultSet">
   SELECT*FROM TTMember WHERE id=?AND password=?

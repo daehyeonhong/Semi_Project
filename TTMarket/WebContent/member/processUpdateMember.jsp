@@ -25,8 +25,8 @@ java.sql.Date sqlDate = new java.sql.Date(currentDatetime.getTime());
 Timestamp timestamp = new Timestamp(currentDatetime.getTime());
 %>
 <sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-	password="1234" />
+	url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="ttestt"
+	password="ttestt11#" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">
 	UPDATE TTMember SET name=?,gender=?,birth=?,phone=?,postcode=?,address=?,detailAddress=?,extraAddress=?,regist_day=? WHERE id=?

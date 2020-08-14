@@ -29,8 +29,8 @@
 <body>
 	<%@include file="/menu.jsp"%>
 	<sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="root"
-		password="1234" />
+		url="jdbc:mysql://15.165.66.140:3306/TTMarketDB?useSSL=false" user="ttestt"
+		password="ttestt11#" />
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">검색 결과</h1>
