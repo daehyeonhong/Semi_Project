@@ -18,7 +18,7 @@ public class DBConnection {
 				user = "ttestt",
 				password = "ttestt11#";
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			connection = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
