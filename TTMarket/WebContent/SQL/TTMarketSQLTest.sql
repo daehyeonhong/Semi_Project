@@ -14,3 +14,7 @@ INSERT INTO TTStatus (Status)VALUES('배송 접수');
 INSERT INTO TTStatus (Status)VALUES('배송 중');
 INSERT INTO TTStatus (Status)VALUES('배송 완료');
 INSERT INTO TTStatus (Status)VALUES('수령 완료');
+
+drop table ttmember;
+drop table ttmember;
+desc ttmember;
