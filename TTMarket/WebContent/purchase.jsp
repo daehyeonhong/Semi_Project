@@ -17,12 +17,12 @@
 	let year = new Date().getFullYear().toString();
 	let month = (new Date().getMonth() + 1).toString();
 		$().ready(function() {
-			
+
 			$('#cancelBtn').click(function() {
 				 alert('취소합니다.');
 				location.href = './cart.jsp';
 			});
-			
+
 			$('#cardYY').change(function() {
 				let cardYY = $('#cardYY').val().trim();
 				let cardMM = $('#cardMM').val().trim();
@@ -42,7 +42,7 @@
 					$('#cardMM').focus();
 				}
 			});
-		 
+
 		 $('#cardId1').change(function () {
 			if (isNaN($('#cardId1').val())) {
 				alert('숫자를 입력하세요.');
@@ -50,7 +50,7 @@
 				$('#cardId1').focus();
 			}
 		});
-		 
+
 		 $('#cardId2').change(function () {
 			if (isNaN($('#cardId2').val())) {
 				alert('숫자를 입력하세요.');
@@ -58,7 +58,7 @@
 				$('#cardId2').focus();
 			}
 		});
-		 
+
 		 $('#cardId3').change(function () {
 			if (isNaN($('#cardId3').val())) {
 				alert('숫자를 입력하세요.');
@@ -66,7 +66,7 @@
 				$('#cardId3').focus();
 			}
 		});
-		 
+
 		 $('#cardId4').change(function () {
 			if (isNaN($('#cardId4').val())) {
 				alert('숫자를 입력하세요.');
@@ -74,7 +74,7 @@
 				$('#cardId4').focus();
 			}
 		});
-		 
+
 		 $('#cardPassword').change(function () {
 			if (isNaN($('#cardPassword').val())) {
 				alert('올바른 값을 입력하세요.');
@@ -82,7 +82,7 @@
 				$('#cardPassword').focus();
 			}
 		});
-		 
+
 		 $('#birth').change(function () {
 			if (isNaN($('#birth').val())) {
 				alert('올바른 값을 입력하세요.');
@@ -140,7 +140,7 @@
 			</td>
 			</tr>
 		    </tbody>
-		  </table>	
+		  </table>
 			</div>
 	<div class="container col-8 alert alert-info">
 		<div>

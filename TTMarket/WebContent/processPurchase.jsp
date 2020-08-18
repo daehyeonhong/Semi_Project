@@ -10,13 +10,13 @@ con.setAutoCommit(false);
 request.setCharacterEncoding("UTF-8");
 	String price = request.getParameter("price"),
 				 card1 = request.getParameter("cardId1"),
-				 card2 = request.getParameter("cardId2"), 
+				 card2 = request.getParameter("cardId2"),
 				 card3 = request.getParameter("cardId3"),
 				 card4 = request.getParameter("cardId4"),
 				 cardMM = request.getParameter("cardMM"),
 				 cardYY = request.getParameter("cardYY"),
 				 cardPassword = request.getParameter("cardPassword"),
-				 birth = request.getParameter("birth"), 
+				 birth = request.getParameter("birth"),
 				 payment = request.getParameter("payment");
 out.print(price + ", ," + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ", " + cardMM + ", " + cardYY + ", " + cardPassword + ", " + birth + ", " + payment + "<br />");
 
@@ -30,7 +30,7 @@ if (cartList != null) {
 			System.out.print(id);
 			PreparedStatement preparedStatement = con.prepareStatement(sql);
 			preparedStatement.setString(1, id);
-			ResultSet resultSet = preparedStatement.executeQuery(); 
+			ResultSet resultSet = preparedStatement.executeQuery();
 			out.print("cartList<br />");
 			out.print("ID: " + id + "<br />");
 			out.print("Stock: " + product.getUnitsInStock() + "<br />");
